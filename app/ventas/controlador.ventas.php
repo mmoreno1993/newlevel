@@ -20,6 +20,13 @@ class ventas extends App {
         //$this->vista->prueba = $this->modelo->getPrueba();
         //$this->vista->filasAfectadas = $this->modelo->actualizarAlmacen();
     }
- 
+    public function pedido()
+    {
+
+    }
+    public function cotizacion()
+    {
+        
+    }
 }
 ?>

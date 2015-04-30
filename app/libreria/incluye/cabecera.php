@@ -54,7 +54,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">New <span class="lite">Level</span></a>
+            <a href="index.php?modulo=ventas&accion=index" class="logo">New <span class="lite">Level</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -70,10 +70,10 @@
             </div>
 
             <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
+                
                 <ul class="nav pull-right top-menu">
                     
-                    <!-- task notificatoin start -->
+                <!--
                     <li id="task_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="icon-task-l"></i>
@@ -157,8 +157,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- task notificatoin end -->
-                    <!-- inbox notificatoin start-->
+
                     <li id="mail_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-l"></i>
@@ -222,6 +221,7 @@
                             </li>
                         </ul>
                     </li>
+                    -->
                     <!-- inbox notificatoin end -->
                     <!-- alert notification start-->
                     <li id="alert_notificatoin_bar" class="dropdown">
@@ -233,38 +233,38 @@
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
-                                <p class="blue">You have 4 new notifications</p>
+                                <p class="blue">Tiene 5 nuevas alertas</p>
                             </li>
                             <li>
                                 <a href="#">
                                     <span class="label label-primary"><i class="icon_profile"></i></span> 
-                                    Friend Request
+                                    Pagar banco BCP
                                     <span class="small italic pull-right">5 mins</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <span class="label label-warning"><i class="icon_pin"></i></span>  
-                                    John location.
+                                    Reporte de cobranza
                                     <span class="small italic pull-right">50 mins</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <span class="label label-danger"><i class="icon_book_alt"></i></span> 
-                                    Project 3 Completed.
+                                    Vendedor 1 ha alcanzado...
                                     <span class="small italic pull-right">1 hr</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <span class="label label-success"><i class="icon_like"></i></span> 
-                                    Mick appreciated your work.
-                                    <span class="small italic pull-right"> Today</span>
+                                    Reunion por Compra de...
+                                    <span class="small italic pull-right"> Hoy</span>
                                 </a>
                             </li>                            
                             <li>
-                                <a href="#">See all notifications</a>
+                                <a href="#">Mostrar todas las alertas</a>
                             </li>
                         </ul>
                     </li>
@@ -273,34 +273,43 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
+                                <!--<img alt="" src="img/avatar1_small.jpg">-->
+                                <img alt="" src="">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">Nestor Chávez</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
+                            <li class="eborder-top">
+                                <a href="#"><i class="icon_key_alt"></i> Cambiar Contraseña</a>
+                            </li>
+                            <!--
                             <li>
                                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
                             </li>
+
                             <li>
                                 <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
                             </li>
+                            -->
                             <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
+                                <a href="#"><i class="glyphicon glyphicon-list-alt"></i> Cambiar Almacén</a>
                             </li>
                             <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="login.html"><i class="glyphicon glyphicon-off"></i> Cerrar Sesión</a>
                             </li>
+                            <!--
                             <li>
                                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
                             <li>
                                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
+                            -->
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -317,7 +326,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
                   <li class="active">
-                      <a class="" href="index.html">
+                      <a class="" href="#">
                           <i class="icon_house_alt"></i>
                           <span>Inicio</span>
                       </a>
@@ -350,7 +359,7 @@
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
-                          <i class="icon_genius"></i>
+                          <i class="glyphicon glyphicon-align-justify"></i>
                           <span>Almacen</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
@@ -366,40 +375,81 @@
 
 
                   </li>
-                  <li>                     
-                      <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-                          
-                      </a>
-                                         
-                  </li>
-                             
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
+                          <i class="glyphicon glyphicon-exclamation-sign"></i>
+                          <span>C. por Cobrar</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="basic_table.html">Basic Table</a></li>
+                          <li><a class="" href="#">Cartera de Clientes</a></li>
+                          <li><a class="" href="#">Registro de Cobranzas</a></li>
+                          <li><a class="" href="#">Canjes de Letra</a></li>
                       </ul>
                   </li>
-                  
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
+                          <i class="glyphicon glyphicon-exclamation-sign"></i>
+                          <span>C. por Pagar</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                          
-                          <li><a class="" href="profile.html">Profile</a></li>
-                          <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                          <li><a class="" href="blank.html">Blank Page</a></li>
-                          <li><a class="" href="404.html">404 Error</a></li>
+                      <ul class="sub">
+                          <li><a class="" href="#">Cartera de Proveedores</a></li>
+                          <li><a class="" href="#">Registro de Pagos</a></li>
+                          <li><a class="" href="#">Canjes de Letra</a></li>
                       </ul>
                   </li>
-                  
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="glyphicon glyphicon-folder-open"></i>
+                          <span>Caja</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="#">Registro Ingresos</a></li>
+                          <li><a class="" href="#">Registro Egresos</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="glyphicon glyphicon-tasks"></i>
+                          <span>Banco</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="#">Ingreso y Salida</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="glyphicon glyphicon-briefcase"></i>
+                          <span>Planillas</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="#">Registro de Asistencia</a></li>
+                          <li><a class="" href="#">Programación de Vacaciones</a></li>
+                          <li><a class="" href="#">Pago a Trabajadores</a></li>
+                      </ul>
+                  </li>
+                  <li class="">
+                      <a class="" href="#">
+                          <i class="glyphicon glyphicon-list-alt"></i>
+                          <span>Reportes</span>
+                      </a>
+                  </li>
+                  <li class="">
+                      <a class="" href="#">
+                          <i class="glyphicon glyphicon-list-alt"></i>
+                          <span>Rep. Gerenciales</span>
+                      </a>
+                  </li>
+                  <li class="">
+                      <a class="" href="#">
+                          <i class="glyphicon glyphicon-wrench"></i>
+                          <span>Config. Sistema</span>
+                      </a>
+                  </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
