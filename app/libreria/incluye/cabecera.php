@@ -44,8 +44,66 @@
   <body>
   <!-- container section start -->
   <section id="container" class="">
-     
-      
+<div id="modal_changepassword" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title danger">Cambiar Contraseña</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label for="txtpassact">Contraseña Actual:</label>
+                    <input id="txtpassact" name="txtpassact" type="password" class="form-control" />
+                    <label for="txtpassnew">Nueva Contraseña:</label>
+                    <input id="txtpassnew" name="txtpassnew" type="password" class="form-control" />
+                    <label for="txtpasscon">Confirmar Contraseña:</label>
+                    <input id="txtpasscon" name="txtpasscon" type="password" class="form-control" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Guardar
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal_changealm" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cambiar Almacen</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label for="cmbAlm">Almacen:</label>
+                    <select id="cmbAlm" name="cmbAlm" class="form-control">
+                        <option selected value="0">Seleccione</option>
+                        <option value="1">Almacen Callao</option>
+                        <option value="1">Almacen Callao 2</option>
+                    </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Guardar
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
       <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Mostrar/Ocultar Menú" data-placement="bottom">
@@ -285,7 +343,10 @@
                                 <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
                             </li>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_key_alt"></i> Cambiar Contraseña</a>
+                                <a href="#" data-toggle="modal" data-target="#modal_changepassword">
+                                    <i class="icon_key_alt"></i> 
+                                    Cambiar Contraseña
+                                </a>
                             </li>
                             <!--
                             <li>
@@ -297,7 +358,10 @@
                             </li>
                             -->
                             <li>
-                                <a href="#"><i class="glyphicon glyphicon-list-alt"></i> Cambiar Almacén</a>
+                                <a href="#" data-toggle="modal" data-target="#modal_changealm">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    Cambiar Almacén
+                                </a>
                             </li>
                             <li>
                                 <a href="login.html"><i class="glyphicon glyphicon-off"></i> Cerrar Sesión</a>
@@ -364,8 +428,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="#">Nota de Ingreso</a></li>
-                          <li><a class="" href="#">Nota de Salida</a></li>
+                          <li><a class="" href="index.php?modulo=almacen&accion=ningreso">Nota de Ingreso</a></li>
+                          <li><a class="" href="index.php?modulo=almacen&accion=nsalida">Nota de Salida</a></li>
                           <li><a class="" href="#">I. O. Compra</a></li>
                           <li><a class="" href="#">I. O. Importación</a></li>
                           <li><a class="" href="#">Transf. Directa</a></li>

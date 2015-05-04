@@ -1,3 +1,32 @@
+<div id="modal_newpedido" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Nuevo Pedido</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!--
+                    <label for="txt">Almacen:</label>
+                    <input />
+                    -->
+                    Falta planificar
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Guardar
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Ventas</h3>
@@ -15,12 +44,29 @@
             </div>
             <div class="panel-body">
                 <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>Filtro por:</label>
+                            <select class="form-control">
+                                <option selected>Fecha</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Desde:</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Hasta:</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <br>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr class="info">
                                     <th>&nbsp;</th>
-                                    <th>Proveedor</th>
+                                    <th>Cliente</th>
                                     <th>Documento</th>
                                     <th>Fecha de Registro</th>
                                     <th>Total</th>
@@ -30,7 +76,7 @@
                             <tbody>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Proveedor 1</td>
+                                    <td>Cliente 1</td>
                                     <td>0010000007</td>
                                     <td>25/04/2015</td>
                                     <td>1000</td>
@@ -38,7 +84,7 @@
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Proveedor 2</td>
+                                    <td>Cliente 2</td>
                                     <td>0010000015</td>
                                     <td>26/04/2015</td>
                                     <td>7000</td>
@@ -46,7 +92,7 @@
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Proveedor 3</td>
+                                    <td>Cliente 3</td>
                                     <td>0020060005</td>
                                     <td>27/04/2015</td>
                                     <td>500</td>
@@ -54,7 +100,7 @@
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Proveedor 4</td>
+                                    <td>Cliente 4</td>
                                     <td>0010000062</td>
                                     <td>29/04/2015</td>
                                     <td>1230</td>

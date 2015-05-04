@@ -1,9 +1,9 @@
-<div id="modal_newdocument" class="modal fade">
+<div id="modal_newcot" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nuevo Documento</h4>
+                <h4 class="modal-title">Nueva Nota de Ingreso</h4>
             </div>
             <div class="modal-body">
                 <form>
@@ -29,10 +29,10 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header"><i class="icon_document_alt"></i> Ventas</h3>
+        <h3 class="page-header"><i class="icon_document_alt"></i> Almacen</h3>
         <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.html">Ventas</a></li>
-            <li><i class="fa fa-laptop"></i>Documentos</li>                          
+            <li><i class="fa fa-home"></i><a href="index.php?modulo=almacen&accion=ningreso">Almacen</a></li>
+            <li><i class="fa fa-laptop"></i>Nota de Ingreso</li>                          
         </ol>
     </div>
 </div>
@@ -40,7 +40,7 @@
     <div class="col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <font color="white"><b>Registro de Documentos</b></font>
+                <font color="white"><b>Registro de Nota de Ingreso</b></font>
             </div>
             <div class="panel-body">
                 <form action="" method="POST">
@@ -66,7 +66,7 @@
                             <thead>
                                 <tr class="info">
                                     <th>&nbsp;</th>
-                                    <th>Cliente</th>
+                                    <th>Proveedor</th>
                                     <th>Documento</th>
                                     <th>Fecha de Registro</th>
                                     <th>Total</th>
@@ -75,28 +75,28 @@
                             <tbody>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Cliente 1</td>
+                                    <td>Proveedor 1</td>
                                     <td>0010000007</td>
                                     <td>25/04/2015</td>
                                     <td>1000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Cliente 2</td>
+                                    <td>Proveedor 2</td>
                                     <td>0010000015</td>
                                     <td>26/04/2015</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Cliente 3</td>
+                                    <td>Proveedor 3</td>
                                     <td>0020060005</td>
                                     <td>27/04/2015</td>
                                     <td>500</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
-                                    <td>Cliente 4</td>
+                                    <td>Proveedor 4</td>
                                     <td>0010000062</td>
                                     <td>29/04/2015</td>
                                     <td>1230</td>
@@ -122,6 +122,7 @@
                             Reporte
                         </button>    
                     </div>
+                    
                 </form>
             </div>
         </div>
