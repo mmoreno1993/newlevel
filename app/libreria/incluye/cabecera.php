@@ -286,7 +286,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                             <i class="icon-bell-l"></i>
-                            <span class="badge bg-important">7</span>
+                            <span class="badge bg-important">5</span>
                         </a>
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
@@ -430,11 +430,13 @@
                       <ul class="sub">
                           <li><a class="" href="index.php?modulo=almacen&accion=ningreso">Nota de Ingreso</a></li>
                           <li><a class="" href="index.php?modulo=almacen&accion=nsalida">Nota de Salida</a></li>
-                          <li><a class="" href="#">I. O. Compra</a></li>
-                          <li><a class="" href="#">I. O. Importación</a></li>
+                          <li><a class="" href="index.php?modulo=almacen&accion=iocompra">I. O. Compra</a></li>
+                          <li><a class="" href="index.php?modulo=almacen&accion=ioimportacion">I. O. Importación</a></li>
+                          <!--
                           <li><a class="" href="#">Transf. Directa</a></li>
                           <li><a class="" href="#">Transf. por Conversión</a></li>
                           <li><a class="" href="#">Transf. Diferencial</a></li>
+                          -->
                       </ul>
 
 

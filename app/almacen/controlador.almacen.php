@@ -24,7 +24,11 @@ class almacen extends App {
     {
 
     }
-    public function cotizacion()
+    public function iocompra()
+    {
+        
+    }
+    public function ioimportacion()
     {
         
     }
