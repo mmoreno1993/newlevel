@@ -15,6 +15,7 @@ class MySQL {
 
     public function abrir_conexion(){
         $this->cn = new mysqli(self::$servidor,self::$usuario_servidor,self::$contrasena_servidor,$this->bd);
+        $this->cn->set_charset("utf8");
     }
     
     public function cerrar_conexion(){

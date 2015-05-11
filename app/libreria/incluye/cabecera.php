@@ -284,7 +284,6 @@
                     <!-- alert notification start-->
                     <li id="alert_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
                             <i class="icon-bell-l"></i>
                             <span class="badge bg-important">5</span>
                         </a>
@@ -389,11 +388,28 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="#">
-                          <i class="icon_house_alt"></i>
-                          <span>Inicio</span>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="glyphicon glyphicon-wrench"></i>
+                          <span>Config. Sistema</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
+                      <ul class="sub">
+                          <li><a class="" href="index.php?modulo=configuracion&accion=articulo">Reg. Artículos</a></li>
+                          <li><a class="" href="#">Reg. Familias</a></li>
+                          <li><a class="" href="#">Reg. Colores</a></li>
+                          <li><a class="" href="#">Reg. Categorías</a></li>
+                          <li><a class="" href="#">Reg. Formas de Pago</a></li>
+                          <li><a class="" href="#">Reg. Marca</a></li>
+                          <li><a class="" href="#">Reg. Proveedores</a></li>
+                          <li><a class="" href="#">Reg. Tipo de Cambio</a></li>
+                          <li><a class="" href="#">Reg. Clientes</a></li>
+                          <li><a class="" href="#">Reg. Proveedores</a></li>
+                          <li><a class="" href="#">Reg. Trabajadores</a></li>
+                          <li><a class="" href="#">Reg. Transportistas</a></li>
+                          <li><a class="" href="#">Reg. Bancos</a></li>
+                          <li><a class="" href="#">Reg. Proveedores</a></li>
+                      </ul>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
@@ -510,12 +526,8 @@
                           <span>Rep. Gerenciales</span>
                       </a>
                   </li>
-                  <li class="">
-                      <a class="" href="#">
-                          <i class="glyphicon glyphicon-wrench"></i>
-                          <span>Config. Sistema</span>
-                      </a>
-                  </li>
+
+
               </ul>
               <!-- sidebar menu end-->
           </div>
