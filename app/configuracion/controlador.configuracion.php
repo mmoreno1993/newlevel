@@ -19,7 +19,8 @@ class configuracion extends App {
     public function articulo() {
         if(isset($_POST['frmNuevoArticulo'])){
             $this->modelo->registrarArticulo(
-                'descripcion' => $_POST['txtdescripcion'];
+                'descripcion' => $_POST['txtdescripcion'],
+                'codigo_alterno' => $_POST['txtcodigo_alterno']
                 );
         }
 
