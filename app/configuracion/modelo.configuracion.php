@@ -22,6 +22,15 @@ class modeloConfiguracion extends MySQL {
                 ";
         return $this->obtener_resultados();
     }
+    public function obtenerCategorias($familia){
+        $this->query = "
+                select id,descripcion,concat(date_format(if(isnull(a.fecha_modificado)=1,a.fecha_creado,a.fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',
+                if(isnull(a.modificado_por)=1,a.creado_por,a.modificado_por)) as ultima_modificacion,activo from tbl_familia
+                where activo=1
+                ";
+        return $this->obtener_resultados();
+    }
+    
     public function obtenerArticulo($articulo){
         $this->query = "
                 select a.id,a.descripcion as articulo,a.codigo_alterno,f.descripcion as familia,
