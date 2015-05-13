@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-05-2015 a las 12:04:25
+-- Tiempo de generación: 13-05-2015 a las 11:55:31
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_alerta` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(400) DEFAULT NULL,
   `tipo_alerta` int(11) DEFAULT NULL,
   `importancia` int(11) DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `tbl_alerta` (
   `activo` bit(1) DEFAULT NULL,
   `fecha_programacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `tbl_alerta` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_almacen` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `tbl_almacen` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `tbl_almacen` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_articulo` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   `codigo_alterno` varchar(50) DEFAULT NULL,
   `tbl_familia_id` int(11) DEFAULT NULL,
@@ -87,14 +87,17 @@ CREATE TABLE IF NOT EXISTS `tbl_articulo` (
   KEY `tbl_categoria_id` (`tbl_categoria_id`),
   KEY `tbl_color_id` (`tbl_color_id`),
   KEY `tbl_marca_id` (`tbl_marca_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `tbl_articulo`
 --
 
 INSERT INTO `tbl_articulo` (`id`, `descripcion`, `codigo_alterno`, `tbl_familia_id`, `tbl_categoria_id`, `tbl_color_id`, `tbl_marca_id`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`, `foto`) VALUES
-(0, 'Artículo 1', 'C00001', 0, NULL, NULL, NULL, 'Moisés Moreno', '2015-05-11 06:08:24', NULL, NULL, b'1', NULL);
+(1, 'Artículo 1', 'C00001', 1, NULL, NULL, NULL, 'Moisés Moreno', '2015-05-11 06:08:24', NULL, NULL, b'1', NULL),
+(4, 'Artículo 2', '1234', 1, NULL, NULL, NULL, 'Moisés Moreno', '2015-05-13 06:28:53', NULL, NULL, b'1', ''),
+(5, 'ss', 'ss', NULL, NULL, NULL, NULL, 'Moisés Moreno', '2015-05-13 06:43:02', NULL, NULL, b'1', ''),
+(6, 'd', 'd', NULL, NULL, NULL, NULL, 'Moisés Moreno', '2015-05-13 06:43:24', NULL, NULL, b'1', '');
 
 -- --------------------------------------------------------
 
@@ -103,7 +106,7 @@ INSERT INTO `tbl_articulo` (`id`, `descripcion`, `codigo_alterno`, `tbl_familia_
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_asistencia` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tbl_trabajador_id` int(11) DEFAULT NULL,
   `ingreso` varchar(10) DEFAULT NULL,
   `salida` varchar(10) DEFAULT NULL,
@@ -116,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `tbl_asistencia` (
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_trabajador_id_idx` (`tbl_trabajador_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -125,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `tbl_asistencia` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_banco` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(150) DEFAULT NULL,
   `moneda` int(11) DEFAULT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
@@ -133,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banco` (
   `modificado_por` varchar(100) DEFAULT NULL,
   `fecha_modificado` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banco` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_caja_movimiento` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tipo_movimiento` bit(1) DEFAULT NULL,
   `monto` double DEFAULT NULL,
   `tbl_concepto_id` int(11) DEFAULT NULL,
@@ -154,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `tbl_caja_movimiento` (
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_concepto_id_idx` (`tbl_concepto_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -190,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cartera` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_categoria` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   `tbl_familia_id` int(11) NOT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
@@ -199,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `tbl_categoria` (
   `fecha_modificado` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_familia_id_idx` (`tbl_familia_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -208,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `tbl_categoria` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_cheque` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `documento` varchar(20) DEFAULT NULL,
   `monto` double DEFAULT NULL,
   `tbl_cliente_id` int(11) DEFAULT NULL,
@@ -223,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cheque` (
   PRIMARY KEY (`id`),
   KEY `fk_tbl_cliente_id_idx` (`tbl_cliente_id`),
   KEY `fk_tbl_proveedor_id_idx` (`tbl_proveedor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -232,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cheque` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_cliente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `razonsocial` varchar(200) DEFAULT NULL,
   `grupo` varchar(10) DEFAULT NULL,
   `ruc` varchar(11) DEFAULT NULL,
@@ -252,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cliente` (
   `activo` bit(1) DEFAULT NULL,
   `tipo_cliente` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -296,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cobrar_pagar` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_color` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
   `fecha_creado` datetime DEFAULT NULL,
@@ -304,7 +307,15 @@ CREATE TABLE IF NOT EXISTS `tbl_color` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tbl_color`
+--
+
+INSERT INTO `tbl_color` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, 'Rojo', 'Moisés Moreno', '2015-05-04 04:00:00', NULL, NULL, b'1'),
+(2, 'Azul', 'Moisés Moreno', '2015-05-05 18:25:00', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -438,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `tbl_facdet` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_familia` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
   `fecha_creado` datetime DEFAULT NULL,
@@ -446,14 +457,14 @@ CREATE TABLE IF NOT EXISTS `tbl_familia` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `tbl_familia`
 --
 
 INSERT INTO `tbl_familia` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
-(0, 'Familia de Prueba', 'Moisés Moreno', '2015-05-11 00:00:00', NULL, NULL, b'1');
+(1, 'Familia de Prueba', 'Moisés Moreno', '2015-05-11 00:00:00', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 

@@ -5,41 +5,61 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Nuevo de Artículo</h4>
             </div>
-            <div class="modal-body">
-                <form name="frmNuevoArticulo" method="POST" action="index.php?modulo=configuracion&accion=articulo">
-                    <label for="txtdescripcion">Descripción(*)</label>
-                    <input id="txtdescripcion" name="txtdescripcion" class="form-control" type="text" />
-                    <label for="txtcodigo_alterno">Código Alterno</label>
-                    <input id="txtcodigo_alterno" name="txtcodigo_alterno" class="form-control" type="text" />
-                    <label for="txtfamilia">Familia(*)</label>
-                    <input id="txtfamilia" name="txtfamilia" class="form-control" type="text" />
-                    <label for="txtcategoria">Categoria</label>
-                    <input id="txtcategoria" name="txtcategoria" class="form-control" type="text" />
-                    <label for="txtcolor1">Color 1</label>
-                    <input id="txtcolor1" name="txtcolor1" class="form-control" type="text" />
-                    <label for="txtcolor2">Color 2</label>
-                    <input id="txtcolor2" name="txtcolor2" class="form-control" type="text" />
-                    <label for="txtcolor3">Color 3</label>
-                    <input id="txtcolor3" name="txtcolor3" class="form-control" type="text" />
-                    <label for="txtmarca">Marca</label>
-                    <input id="txtmarca" name="txtmarca" class="form-control" type="text" />
-                    <label for="txtfoto">Foto</label>
-                    <input id="txtfoto" name="txtfoto" class="form-control" type="text" />
-                    <input id="btnGuardar" type="submit" />
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button onclick="$('#btnGuardar').click();" type="button" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Guardar
-                </button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Close
-                </button>
-            </div>
+            <form name="frmNuevoArticulo" method="POST" action="index.php?modulo=configuracion&accion=articulo">
+                <div class="modal-body">
+                        <label for="txtdescripcion">Descripción(*)</label>
+                        <input required id="txtdescripcion" name="txtdescripcion" class="form-control" type="text" />
+                        <label for="txtcodigo_alterno">Código Alterno</label>
+                        <input id="txtcodigo_alterno" name="txtcodigo_alterno" class="form-control" type="text" />
+                        <label for="cmbfamilia">Familia</label>
+                        <select id="cmbfamilia" name="cmbfamilia" class="form-control">
+                            <option selected value="null">Seleccione</option>
+                            <?php
+                                for ($i=0; $i <count($this->familias) ; $i++) { 
+                                    echo '<option value="'.$this->familias[$i]['id'].'">'.$this->familias[$i]['descripcion'].'</option>';
+                                }
+                            ?>
+                        </select>
+                        <label for="cmbcategoria">Categoria</label>
+                        <select id="cmbcategoria" name="cmbcategoria" class="form-control">
+                            <option selected value="null">Seleccione</option>
+                        </select>
+                        <label for="cmbcolor">Color</label>
+                        <select id="cmbcolor" name="cmbcolor" class="form-control">
+                            <option selected value="null">Seleccione</option>
+                            <?php
+                                for ($i=0; $i <count($this->colores) ; $i++) { 
+                                    echo '<option value="'.$this->colores[$i]['id'].'">'.$this->colores[$i]['descripcion'].'</option>';
+                                }
+                            ?>
+                        </select>
+                        <label for="cmbmarca">Marca</label>
+                        <select id="cmbmarca" name="cmbmarca" class="form-control">
+                            <option selected value="null">Seleccione</option>
+                            <?php
+                                for ($i=0; $i <count($this->marcas) ; $i++) { 
+                                    echo '<option value="'.$this->marcas[$i]['id'].'">'.$this->marcas[$i]['descripcion'].'</option>';
+                                }
+                            ?>
+                        </select>
+                        <label for="txtfoto">Foto</label><br>
+                        <input id="txtfoto" name="txtfoto" type="file" />
+                </div>
+                <div class="modal-footer">
+                    <button name="btnNuevoArticulo" type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Guardar
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Close
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+<div id="modal_modificar_articulo" class="modal fade">
 </div>
 <div class="row">
     <div class="col-lg-12">

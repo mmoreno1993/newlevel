@@ -32,6 +32,7 @@ class MySQL {
     
     public function obtener_resultados(){
         $this->abrir_conexion();
+        $this->filas = array();
         $result = $this->cn->query($this->query);
         while ($this->filas[]=$result->fetch_assoc());
         $result->close();
