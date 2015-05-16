@@ -80,7 +80,7 @@
                                     <td><?php echo $this->bancos[$i]['descripcion']; ?></td>
                                     <td><?php echo $this->bancos[$i]['ultima_modificacion']; ?></td>
                                     <td><a data-toggle="modal" data-target="#modal_modificar_banco" href="#" onclick="modificarBanco('index.php?modulo=configuracion&accion=modificarBanco&banco=<?php echo $this->bancos[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="index.php?modulo=configuracion&accion=cuentacorriente&banco=<?php echo $this->bancos[$i]['id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><a href="index.php?modulo=configuracion&accion=cuentacorriente&banco=<?php echo $this->bancos[$i]['id']; ?>"><span class="glyphicon glyphicon-align-justify"></span></a></td>
                                 </tr>
                                 <?php 
                                     }

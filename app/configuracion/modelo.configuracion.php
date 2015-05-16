@@ -475,6 +475,61 @@ class modeloConfiguracion extends MySQL {
         return $this->ejecutar_query_simple();
     }
 
+    public function obtenerClientes(){
+        $this->query = "
+                select id,razonsocial,grupo,ruc,direccion,contacto,telefono_fijo,telefono_movil,cuenta_inicial_soles,
+                cuenta_inicial_dolares,cuenta_inicial_soles_fecha,cuenta_inicial_dolares_fecha,
+                concat(date_format(if(isnull(fecha_modificado)=1,fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),
+                ' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,activo,
+                tipo_cliente from tbl_cliente where activo=1
+                ";
+        return $this->obtener_resultados();
+    }
+    public function obtenerCliente($cliente){
+        $this->query = "
+                select id,razonsocial,grupo,ruc,direccion,contacto,telefono_fijo,telefono_movil,cuenta_inicial_soles,
+                cuenta_inicial_dolares,cuenta_inicial_soles_fecha,cuenta_inicial_dolares_fecha,
+                concat(date_format(if(isnull(fecha_modificado)=1,fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),
+                ' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,activo,
+                tipo_cliente from tbl_cliente
+                where activo=1 and id=".$cliente['id']."
+                ";
+        return $this->obtener_resultados();
+    }
+    public function registrarCliente($cliente){
+        $this->query = "
+                insert into tbl_cliente(razonsocial,grupo,ruc,direccion,contacto,telefono_fijo,telefono_movil,
+                cuenta_inicial_soles,cuenta_inicial_dolares,cuenta_inicial_soles_fecha,cuenta_inicial_dolares_fecha,
+                creado_por,fecha_creado,activo) 
+                values('".$cliente['razonsocial']."','".$cliente['grupo']."','".$cliente['ruc']."',
+                '".$cliente['direccion']."','".$cliente['contacto']."','".$cliente['telefono_fijo']."',
+                '".$cliente['telefono_movil']."',".$cliente['cuenta_inicial_soles'].",".$cliente['cuenta_inicial_dolares'].",
+                '".$cliente['cuenta_inicial_soles_fecha']."','".$cliente['cuenta_inicial_dolares_fecha']."',
+                '".$cliente['creado_por']."',now(),1)
+                ";
+        return $this->ejecutar_query_simple();
+    }
+    public function modificarCliente($cliente){
+        $this->query = "
+                update tbl_cliente set razonsocial='".$cliente['razonsocial']."',grupo='".$cliente['grupo']."',
+                razonsocial='".$cliente['razonsocial']."',grupo='".$cliente['grupo']."',ruc='".$cliente['ruc']."',
+                direccion='".$cliente['direccion']."',contacto='".$cliente['contacto']."',telefono_fijo='".$cliente['telefono_fijo']."',
+                telefono_movil='".$cliente['telefono_movil']."',cuenta_inicial_soles=".$cliente['cuenta_inicial_soles'].",
+                cuenta_inicial_dolares=".$cliente['cuenta_inicial_dolares'].",
+                cuenta_inicial_soles_fecha='".$cliente['cuenta_inicial_soles_fecha']."',cuenta_inicial_dolares_fecha='".$cliente['cuenta_inicial_dolares_fecha']."',
+                modificado_por='".$cliente['modificado_por']."',fecha_modificado=now() 
+                where id=".$cliente['id']."
+                ";
+
+        return $this->ejecutar_query_simple();
+    }
+    public function eliminarCliente($cliente){
+        $this->query = "
+                update tbl_cliente set activo=0 where id=".$cliente['id']."
+                ";
+        return $this->ejecutar_query_simple();
+    }
+
     public function __destruct(){
         unset($this);
     }

@@ -418,5 +418,57 @@ class configuracion extends App {
             'id' => $_GET['cuentacorriente']
             ));
     }
+    public function cliente(){
+        if(isset($_POST['btnNuevoCliente'])){
+            $this->modelo->registrarCliente(array(
+                'ruc' => $_POST['txtruc'],
+                'razonsocial' => $_POST['txtrazonsocial'],
+                'direccion' => $_POST['txtdireccion'],
+                'contacto' => $_POST['txtcontacto'],
+                'telefono_fijo' => $_POST['txttelefono'],
+                'telefono_movil' => $_POST['txttelefonomovil'],
+                'cuenta_inicial_soles' => $_POST['txtmontosoles'],
+                'cuenta_inicial_dolares' => $_POST['txtmontodolares'],
+                'cuenta_inicial_soles_fecha' => $_POST['txtfechasoles'],
+                'cuenta_inicial_dolares_fecha' => $_POST['txtfechadolares'],
+                'creado_por' => $_SESSION['user']['nombre']
+                ));
+            header('Location:index.php?modulo=configuracion&accion=cliente');
+        }
+        if(isset($_POST['btnModificarCliente'])){
+
+            $this->modelo->modificarCliente(array(
+                'id' => $_POST['txtid'],
+                'ruc' => $_POST['txtruc'],
+                'razonsocial' => $_POST['txtrazonsocial'],
+                'direccion' => $_POST['txtdireccion'],
+                'contacto' => $_POST['txtcontacto'],
+                'telefono_fijo' => $_POST['txttelefono'],
+                'telefono_movil' => $_POST['txttelefonomovil'],
+                'cuenta_inicial_soles' => $_POST['txtmontosoles'],
+                'cuenta_inicial_dolares' => $_POST['txtmontodolares'],
+                'cuenta_inicial_soles_fecha' => $_POST['txtfechasoles_'],
+                'cuenta_inicial_dolares_fecha' => $_POST['txtfechadolares_'],
+                'modificado_por' => $_SESSION['user']['nombre'],
+                ));
+            header('Location:index.php?modulo=configuracion&accion=cliente');
+        }
+        if(isset($_POST['btnEliminarCliente'])){
+            foreach ($_POST['chkCliente'] as $val) {
+                $this->modelo->eliminarCliente(array(
+                'id' => $val,
+                'modificado_por' => $_SESSION['user']['nombre']
+                ));
+            }
+            
+            header('Location:index.php?modulo=configuracion&accion=cliente');
+        }
+        $this->vista->clientes = $this->modelo->obtenerClientes();
+    }
+    public function modificarCliente(){
+        $this->vista->cliente = $this->modelo->obtenerCliente(array(
+            'id' => $_GET['cliente']
+            ));
+    }
 }
 ?>

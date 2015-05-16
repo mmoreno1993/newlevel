@@ -416,7 +416,7 @@
                           <li><a class="" href="index.php?modulo=configuracion&accion=marca">Reg. Marca</a></li>
                           <li><a class="" href="#">Reg. Proveedores</a></li>
                           <li><a class="" href="index.php?modulo=configuracion&accion=tipocambio">Reg. Tipo de Cambio</a></li>
-                          <li><a class="" href="#">Reg. Clientes</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=cliente">Reg. Clientes</a></li>
                           <li><a class="" href="#">Reg. Proveedores</a></li>
                           <li><a class="" href="#">Reg. Trabajadores</a></li>
                           <li><a class="" href="#">Reg. Transportistas</a></li>

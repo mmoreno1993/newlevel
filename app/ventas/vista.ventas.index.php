@@ -31,7 +31,7 @@
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Ventas</h3>
         <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.html">Ventas</a></li>
+            <li><i class="fa fa-home"></i><a href="#">Ventas</a></li>
             <li><i class="fa fa-laptop"></i>Documentos</li>                          
         </ol>
     </div>
