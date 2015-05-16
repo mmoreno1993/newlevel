@@ -20,7 +20,7 @@
                 <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
                     <div class="panel panel-primary" align="center">
                         <div class="panel-heading">
-                            <img src="" width="210" height="70" alt="" />
+                            <img src="assets/img/logonewlevel3.png" width="210" height="70" alt="" />
                         </div>
                         <div class="panel-body" align="left">
                             <br>
@@ -44,9 +44,8 @@
                                     </div>
                                     <input type="password" name="txtpassword" id="txtpassword" class="form-control" placeholder="Ingrese Contraseña" />
                                 </div>
-                                
                                 <br>
-                                <button onclick="index.php?modulo=ventas" align="center" name="acceso" class="btn btn-primary" >
+                                <button onclick="index.php?modulo=configuracion&accion=articulo" align="center" name="acceso" class="btn btn-primary" >
                                     <span class="glyphicon glyphicon-ok"></span> 
                                     Ingresar
                                 </button>        

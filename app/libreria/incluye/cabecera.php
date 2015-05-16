@@ -33,12 +33,12 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet" />
     <link href="assets/css/xcharts.min.css" rel=" stylesheet"> 
     <link href="assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-      <script src="js/lte-ie7.js"></script>
-    <![endif]-->
+
+    <link href="assets/datapicker/jquery-ui.css" rel="stylesheet">
+    <link href="assets/datapicker/jquery-ui.theme.css" rel="stylesheet">
+    <link href="assets/datapicker/jquery-ui.structure.css" rel="stylesheet">
+    <script type="text/javascript" src="assets/datapicker/jquery-ui.js"></script>
+
   </head>
 
   <body>
@@ -51,26 +51,28 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title danger">Cambiar Contraseña</h4>
             </div>
-            <div class="modal-body">
-                <form>
+            <form method="POST" action="index.php?modulo=configuracion&accion=articulo">
+                <div class="modal-body">
+                    
                     <label for="txtpassact">Contraseña Actual:</label>
                     <input id="txtpassact" name="txtpassact" type="password" class="form-control" />
                     <label for="txtpassnew">Nueva Contraseña:</label>
                     <input id="txtpassnew" name="txtpassnew" type="password" class="form-control" />
                     <label for="txtpasscon">Confirmar Contraseña:</label>
                     <input id="txtpasscon" name="txtpasscon" type="password" class="form-control" />
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Guardar
-                </button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Close
-                </button>
-            </div>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="btnCambiarClave" type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Guardar
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Close
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -81,26 +83,30 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Cambiar Almacen</h4>
             </div>
-            <div class="modal-body">
-                <form>
-                    <label for="cmbAlm">Almacen:</label>
+            <form method="POST" action="index.php?modulo=configuracion&accion=articulo">
+                <div class="modal-body">
+                    <label for="cmbAlm">Almacen</label>
                     <select id="cmbAlm" name="cmbAlm" class="form-control">
-                        <option selected value="0">Seleccione</option>
-                        <option value="1">Almacen Callao</option>
-                        <option value="1">Almacen Callao 2</option>
+                        <!--<option value="null">Seleccione</option>-->
+                        <?php
+                        for ($i=0; $i < count($_SESSION['user']['almacenes']) ; $i++) { 
+                            echo '<option '.(($_SESSION['user']['almacenes'][$i]['id']==$_SESSION['user']['almacencodigo'])?'selected':'').' value="'.$_SESSION['user']['almacenes'][$i]['id'].'">'.$_SESSION['user']['almacenes'][$i]['descripcion'].'</option>';
+                        }
+                        ?>
                     </select>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Guardar
-                </button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Close
-                </button>
-            </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="btnCambiarAlmacen" type="button" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Guardar
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Close
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -112,20 +118,24 @@
             </div>
 
             <!--logo start-->
-            <a href="index.php?modulo=ventas&accion=index" class="logo">New <span class="lite">Level</span></a>
+            <a href="index.php?modulo=configuracion&accion=articulo" class="logo">New <span class="lite">Level</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
-                <!--  search form start -->
+                <?php
+                    echo 'Almacen Activo: '.$_SESSION['user']['almacen'];
+                ?>
+           <!--
                 <ul class="nav top-menu">                    
                     <li>
                         <form class="navbar-form">
-                            <input class="form-control" placeholder="Search" type="text">
+                            <input class="form-control" placeholder="Buscar" type="text">
                         </form>
                     </li>                    
                 </ul>
-                <!--  search form end -->                
+           -->
             </div>
+        
 
             <div class="top-nav notification-row">                
                 
@@ -333,7 +343,7 @@
                                 <!--<img alt="" src="img/avatar1_small.jpg">-->
                                 <img alt="" src="">
                             </span>
-                            <span class="username">Nestor Chávez</span>
+                            <span class="username"><?php echo $_SESSION['user']['nombre'] ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -363,7 +373,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="login.html"><i class="glyphicon glyphicon-off"></i> Cerrar Sesión</a>
+                                <a href="logout.php"><i class="glyphicon glyphicon-off"></i> Cerrar Sesión</a>
                             </li>
                             <!--
                             <li>
@@ -396,19 +406,23 @@
                       </a>
                       <ul class="sub">
                           <li><a class="" href="index.php?modulo=configuracion&accion=articulo">Reg. Artículos</a></li>
-                          <li><a class="" href="#">Reg. Familias</a></li>
-                          <li><a class="" href="#">Reg. Colores</a></li>
-                          <li><a class="" href="#">Reg. Categorías</a></li>
-                          <li><a class="" href="#">Reg. Formas de Pago</a></li>
-                          <li><a class="" href="#">Reg. Marca</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=familia">Reg. Familias</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=color">Reg. Colores</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=almacen">Reg. Almacenes</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=puntoventa">Reg. Punto Venta</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=banco">Reg. Bancos</a></li>
+                          <!--<li><a class="" href="#">Reg. Categorías</a></li>-->
+                          <li><a class="" href="index.php?modulo=configuracion&accion=formapago">Reg. Formas de Pago</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=marca">Reg. Marca</a></li>
                           <li><a class="" href="#">Reg. Proveedores</a></li>
-                          <li><a class="" href="#">Reg. Tipo de Cambio</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=tipocambio">Reg. Tipo de Cambio</a></li>
                           <li><a class="" href="#">Reg. Clientes</a></li>
                           <li><a class="" href="#">Reg. Proveedores</a></li>
                           <li><a class="" href="#">Reg. Trabajadores</a></li>
                           <li><a class="" href="#">Reg. Transportistas</a></li>
-                          <li><a class="" href="#">Reg. Bancos</a></li>
+                          
                           <li><a class="" href="#">Reg. Proveedores</a></li>
+                          <li><a class="" href="index.php?modulo=configuracion&accion=usuario">Reg. Usuarios</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">

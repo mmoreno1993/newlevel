@@ -3,9 +3,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nuevo de Artículo</h4>
+                <h4 class="modal-title">Nuevo Artículo</h4>
             </div>
-            <form name="frmNuevoArticulo" method="POST" action="index.php?modulo=configuracion&accion=articulo">
+            <form autocomplete="off" name="frmNuevoArticulo" method="POST" action="index.php?modulo=configuracion&accion=articulo">
                 <div class="modal-body">
                         <label for="txtdescripcion">Descripción(*)</label>
                         <input required id="txtdescripcion" name="txtdescripcion" class="form-control" type="text" />
@@ -43,7 +43,16 @@
                             ?>
                         </select>
                         <label for="txtfoto">Foto</label><br>
-                        <input id="txtfoto" name="txtfoto" type="file" />
+                        <input class="form-control" id="txtfoto" name="txtfoto" type="file" /><br>
+                        <label for="txtprecio1">Precio 1</label>
+                        <input class="form-control" id="txtprecio1" name="txtprecio1" />
+                        <label for="txtprecio2">Precio 2</label>
+                        <input class="form-control" id="txtprecio2" name="txtprecio2" />
+                        <label for="txtprecio3">Precio 3</label>
+                        <input class="form-control" id="txtprecio3" name="txtprecio3" />
+                        <label for="txtprecio_contable">Precio Contable</label>
+                        <input class="form-control" id="txtprecio_contable" name="txtprecio_contable" />
+
                 </div>
                 <div class="modal-footer">
                     <button name="btnNuevoArticulo" type="submit" class="btn btn-primary">
@@ -65,7 +74,7 @@
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Configuración</h3>
         <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.php?modulo=almacen&accion=nsalida">Configuración</a></li>
+            <li><i class="fa fa-home"></i><a href="index.php?modulo=configuracion&accion=articulo">Configuración</a></li>
             <li><i class="fa fa-laptop"></i>Reg. Artículos</li>                          
         </ol>
     </div>
@@ -103,6 +112,7 @@
                                     <th>Artículo</th>
                                     <th>Familia</th>
                                     <th>Última modificación</th>
+                                    <th>Modificar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,10 +120,12 @@
                                     for ($i=0; $i < count($this->articulos) ; $i++) { 
                                 ?>
                                 <tr>
-                                    <td><input value="<? $this->[$i]['id'] ?>" type="checkbox" /></td>
+                                    <td><input name="chkArticulo[]" value="<?php echo $this->articulos[$i]['id']; ?>" type="checkbox" /></td>
                                     <td><?php echo $this->articulos[$i]['articulo']; ?></td>
                                     <td><?php echo $this->articulos[$i]['familia']; ?></td>
+                                    
                                     <td><?php echo $this->articulos[$i]['ultima_modificacion']; ?></td>
+                                    <td><a data-toggle="modal" data-target="#modal_modificar_articulo" href="#" onclick="modificarArticulo('index.php?modulo=configuracion&accion=modificarArticulo&articulo=<?php echo $this->articulos[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 </tr>
                                 <?php 
                                     }
@@ -126,11 +138,7 @@
                             <span class="glyphicon glyphicon-plus"></span>
                             Nuevo
                         </button>
-                        <button style="width:100px;" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            Modificar
-                        </button>
-                        <button style="width:100px;" class="btn btn-primary">
+                        <button name="btnEliminarArticulo" type="submit" style="width:100px;" class="btn btn-primary">
                             <span class="glyphicon glyphicon-remove"></span>
                             Eliminar
                         </button>
@@ -144,3 +152,8 @@
         </div>
     </div>
 </div>
+<script>
+function modificarArticulo(url){
+    $('#modal_modificar_articulo').load(url);
+}
+</script>

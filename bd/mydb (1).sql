@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-05-2015 a las 11:55:31
+-- Tiempo de generación: 16-05-2015 a las 03:07:06
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `tbl_alerta` (
 
 CREATE TABLE IF NOT EXISTS `tbl_almacen` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) DEFAULT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `almacen_cercano` int(11) DEFAULT NULL,
@@ -60,7 +60,15 @@ CREATE TABLE IF NOT EXISTS `tbl_almacen` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tbl_almacen`
+--
+
+INSERT INTO `tbl_almacen` (`id`, `descripcion`, `direccion`, `telefono`, `almacen_cercano`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, 'Almacen 1', '-', '-', NULL, 'Moisés Moreno', '2015-05-15 01:06:34', NULL, NULL, b'1'),
+(2, 'Almacen 2', '-', '-', NULL, 'Moisés Moreno', '2015-05-15 01:06:57', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -130,13 +138,22 @@ CREATE TABLE IF NOT EXISTS `tbl_asistencia` (
 CREATE TABLE IF NOT EXISTS `tbl_banco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(150) DEFAULT NULL,
-  `moneda` int(11) DEFAULT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
   `fecha_creado` datetime DEFAULT NULL,
   `modificado_por` varchar(100) DEFAULT NULL,
   `fecha_modificado` datetime DEFAULT NULL,
+  `activo` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `tbl_banco`
+--
+
+INSERT INTO `tbl_banco` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, 'BCP', '', '2015-05-15 20:38:04', 'Moreno Moisés', '2015-05-15 20:38:38', b'0'),
+(2, 'Banco de Credito del Perú', 'Moreno Moisés', '2015-05-15 20:41:04', NULL, NULL, b'1'),
+(3, 'Interbank', 'Moreno Moisés', '2015-05-15 20:41:10', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -315,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `tbl_color` (
 
 INSERT INTO `tbl_color` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
 (1, 'Rojo', 'Moisés Moreno', '2015-05-04 04:00:00', NULL, NULL, b'1'),
-(2, 'Azul', 'Moisés Moreno', '2015-05-05 18:25:00', NULL, NULL, b'1');
+(2, 'Azul', 'Moisés Moreno', '2015-05-05 18:25:00', 'Moisés Moreno', '2015-05-15 01:06:03', b'1');
 
 -- --------------------------------------------------------
 
@@ -366,8 +383,9 @@ CREATE TABLE IF NOT EXISTS `tbl_contactotransportista` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_cuenta_corriente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cuenta` varchar(100) DEFAULT NULL,
+  `moneda` bit(1) NOT NULL,
   `tbl_banco_id` int(11) DEFAULT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
   `fecha_creado` datetime DEFAULT NULL,
@@ -376,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cuenta_corriente` (
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_banco_id_idx` (`tbl_banco_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -385,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cuenta_corriente` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_faccab` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tbl_trabajador_id` int(11) DEFAULT NULL,
   `tbl_cliente_id` int(11) DEFAULT NULL,
   `tbl_puntoventa_id` int(11) DEFAULT NULL,
@@ -413,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `tbl_faccab` (
   KEY `fk_tbl_cuenta_corriente_id_idx` (`tbl_cuenta_corriente_id`),
   KEY `fk_tbl_banco_id_idx` (`tbl_banco_id`),
   KEY `fk_tbl_guia_id_idx` (`tbl_guia_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -422,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `tbl_faccab` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_facdet` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `tbl_articulo_id` int(11) DEFAULT NULL,
   `cantidad` double DEFAULT NULL,
   `precio` double DEFAULT NULL,
@@ -440,7 +458,7 @@ CREATE TABLE IF NOT EXISTS `tbl_facdet` (
   PRIMARY KEY (`id`),
   KEY `fk_tbl_faccab_id_idx` (`tbl_faccab_id`),
   KEY `fk_tbl_articulo_id_idx` (`tbl_articulo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -473,7 +491,7 @@ INSERT INTO `tbl_familia` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `m
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_formapago` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) DEFAULT NULL,
   `dia` int(11) DEFAULT NULL,
   `deposito` bit(1) DEFAULT NULL,
@@ -483,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `tbl_formapago` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -545,7 +563,7 @@ CREATE TABLE IF NOT EXISTS `tbl_guiadet` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_historial_precio` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tbl_articulo_id` int(11) DEFAULT NULL,
   `tbl_cliente_id` int(11) DEFAULT NULL,
   `fecha_cambio` datetime DEFAULT NULL,
@@ -557,7 +575,7 @@ CREATE TABLE IF NOT EXISTS `tbl_historial_precio` (
   PRIMARY KEY (`id`),
   KEY `fk_tbl_articulo_id_idx` (`tbl_articulo_id`),
   KEY `fk_tbl_cliente_id_idx` (`tbl_cliente_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -591,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `tbl_letra` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_marca` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) NOT NULL,
   `creado_por` varchar(100) DEFAULT NULL,
   `fecha_creado` datetime DEFAULT NULL,
@@ -599,7 +617,7 @@ CREATE TABLE IF NOT EXISTS `tbl_marca` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -645,7 +663,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pagotrabajador` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_proveedor` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `razonsocial` varchar(200) DEFAULT NULL,
   `grupo` varchar(10) DEFAULT NULL,
   `ruc` varchar(11) DEFAULT NULL,
@@ -665,7 +683,7 @@ CREATE TABLE IF NOT EXISTS `tbl_proveedor` (
   `activo` bit(1) DEFAULT NULL,
   `tipo_proveedor` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -687,6 +705,13 @@ CREATE TABLE IF NOT EXISTS `tbl_puntoventa` (
   PRIMARY KEY (`id`),
   KEY `fk_tbl_almacen_id_idx` (`tbl_almacen_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_puntoventa`
+--
+
+INSERT INTO `tbl_puntoventa` (`id`, `descripcion`, `direccion`, `telefono`, `tbl_almacen_id`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(0, 'Punto de Venta 1', '-', '-', 1, 'Moisés Moreno', '2015-05-15 01:06:21', 'Moisés Moreno', '2015-05-15 01:07:06', b'1');
 
 -- --------------------------------------------------------
 
@@ -736,7 +761,7 @@ CREATE TABLE IF NOT EXISTS `tbl_submenu` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_tipocambio` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cambio_compra` double DEFAULT NULL,
   `cambio_venta` double DEFAULT NULL,
   `fecha` date DEFAULT NULL,
@@ -746,7 +771,18 @@ CREATE TABLE IF NOT EXISTS `tbl_tipocambio` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `tbl_tipocambio`
+--
+
+INSERT INTO `tbl_tipocambio` (`id`, `cambio_compra`, `cambio_venta`, `fecha`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, 3.2, 3.1, '0000-00-00', '', '2015-05-15 14:26:56', NULL, NULL, b'1'),
+(2, 12, 1, '0000-00-00', '', '2015-05-15 14:32:48', NULL, NULL, b'1'),
+(3, 3, 3, '0000-00-00', '', '2015-05-15 14:33:34', NULL, NULL, b'1'),
+(4, 3, 3, '0000-00-00', '', '2015-05-15 15:11:08', NULL, NULL, b'1'),
+(5, 3, 3, '2015-05-19', '', '2015-05-15 15:56:06', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -755,7 +791,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tipocambio` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_trabajador` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `apepat` varchar(85) DEFAULT NULL,
   `apemat` varchar(85) DEFAULT NULL,
   `nombre_1` varchar(85) DEFAULT NULL,
@@ -771,7 +807,7 @@ CREATE TABLE IF NOT EXISTS `tbl_trabajador` (
   `modificado_por` varchar(100) DEFAULT NULL,
   `fecha_modificado` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -826,7 +862,14 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `tbl_trabajador_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_trabajador_id_idx` (`tbl_trabajador_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `tbl_usuario`
+--
+
+INSERT INTO `tbl_usuario` (`id`, `apepat`, `apemat`, `nombre_1`, `nombre_2`, `correo`, `password`, `alias`, `telefono`, `direccion`, `dni`, `fecha_nacimiento`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`, `tipo_usuario`, `tbl_trabajador_id`) VALUES
+(1, 'Moreno', 'Usnayo', 'Moisés', 'Javier', 'moises_moreno007@hotmail.com', 'moises', 'mmoreno', NULL, NULL, '72391710', NULL, 'Moisés Moreno', '2015-05-15 08:26:11', 'Moisés Moreno', '2015-05-15 09:47:23', b'1', b'1', NULL);
 
 --
 -- Restricciones para tablas volcadas

@@ -1,19 +1,23 @@
-<div id="modal_nueva_familia" class="modal fade">
+<div id="modal_nuevo_almacen" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nueva Familia</h4>
+                <h4 class="modal-title">Nuevo Almacen</h4>
             </div>
-            <form autocomplete="off" name="frmNuevaFamilia" method="POST" action="index.php?modulo=configuracion&accion=familia">
+            <form autocomplete="off" name="frmNuevoAlmacen" method="POST" action="index.php?modulo=configuracion&accion=almacen">
                 <div class="modal-body">
                     <label for="txtdescripcion">Descripción(*)</label>
                     <input required id="txtdescripcion" name="txtdescripcion" class="form-control" type="text" />
+                    <label for="txtdireccion">Dirección</label>
+                    <input id="txtdireccion" name="txtdireccion" class="form-control" type="text" />
+                    <label for="txttelefono">Telefono</label>
+                    <input id="txttelefono" name="txttelefono" class="form-control" type="text" />
                  
 
                 </div>
                 <div class="modal-footer">
-                    <button name="btnNuevaFamilia" type="submit" class="btn btn-primary">
+                    <button name="btnNuevoAlmacen" type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-pencil"></span>
                         Guardar
                     </button>
@@ -26,14 +30,14 @@
         </div>
     </div>
 </div>
-<div id="modal_modificar_familia" class="modal fade">
+<div id="modal_modificar_almacen" class="modal fade">
 </div>
 <div class="row">
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Configuración</h3>
         <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.php?modulo=configuracion&accion=familia">Configuración</a></li>
-            <li><i class="fa fa-laptop"></i>Reg. Familia</li>                          
+            <li><i class="fa fa-home"></i><a href="index.php?modulo=configuracion&accion=almacen">Configuración</a></li>
+            <li><i class="fa fa-laptop"></i>Reg. Almacen</li>                          
         </ol>
     </div>
 </div>
@@ -41,10 +45,10 @@
     <div class="col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <font color="white"><b>Registro de Familias</b></font>
+                <font color="white"><b>Registro de Almacenes</b></font>
             </div>
             <div class="panel-body">
-                <form action="index.php?modulo=configuracion&accion=familia" method="POST">
+                <form action="index.php?modulo=configuracion&accion=almacen" method="POST">
                     <div class="row">
                         <div class="col-sm-4">
                             <label>Filtro por:</label>
@@ -67,20 +71,20 @@
                             <thead>
                                 <tr class="info">
                                     <th>&nbsp;</th>
-                                    <th>Familia</th>
+                                    <th>Almacen</th>
                                     <th>Última modificación</th>
                                     <th>Modificar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    for ($i=0; $i < count($this->familias) ; $i++) { 
+                                    for ($i=0; $i < count($this->almacenes) ; $i++) { 
                                 ?>
                                 <tr>
-                                    <td><input name="chkFamilia[]" value="<?php echo $this->familias[$i]['id']; ?>" type="checkbox" /></td>
-                                    <td><?php echo $this->familias[$i]['descripcion']; ?></td>
-                                    <td><?php echo $this->familias[$i]['ultima_modificacion']; ?></td>
-                                    <td><a data-toggle="modal" data-target="#modal_modificar_familia" href="#" onclick="modificarFamilia('index.php?modulo=configuracion&accion=modificarFamilia&familia=<?php echo $this->familias[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><input name="chkAlmacen[]" value="<?php echo $this->almacenes[$i]['id']; ?>" type="checkbox" /></td>
+                                    <td><?php echo $this->almacenes[$i]['descripcion']; ?></td>
+                                    <td><?php echo $this->almacenes[$i]['ultima_modificacion']; ?></td>
+                                    <td><a data-toggle="modal" data-target="#modal_modificar_almacen" href="#" onclick="modificarAlmacen('index.php?modulo=configuracion&accion=modificarAlmacen&almacen=<?php echo $this->almacenes[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 </tr>
                                 <?php 
                                     }
@@ -89,11 +93,11 @@
                         </table>
                     </div>
                     <div align="center">
-                        <button style="width:100px;" data-toggle="modal" data-target="#modal_nueva_familia" class="btn btn-primary">
+                        <button style="width:100px;" data-toggle="modal" data-target="#modal_nuevo_almacen" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span>
                             Nuevo
                         </button>
-                        <button name="btnEliminarFamilia" type="submit" style="width:100px;" class="btn btn-primary">
+                        <button name="btnEliminarAlmacen" type="submit" style="width:100px;" class="btn btn-primary">
                             <span class="glyphicon glyphicon-remove"></span>
                             Eliminar
                         </button>
@@ -108,7 +112,7 @@
     </div>
 </div>
 <script>
-function modificarFamilia(url){
-    $('#modal_modificar_familia').load(url);
+function modificarAlmacen(url){
+    $('#modal_modificar_almacen').load(url);
 }
 </script>
