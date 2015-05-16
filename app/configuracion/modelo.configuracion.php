@@ -138,7 +138,6 @@ class modeloConfiguracion extends MySQL {
                 if(isnull(a.modificado_por)=1,a.creado_por,a.modificado_por)) as ultima_modificacion from tbl_articulo a left 
                 join tbl_familia f on a.tbl_familia_id=f.id where a.id=".$articulo['id']." and a.activo=1
                 ";
-
         return $this->obtener_resultados();
     }
     public function registrarArticulo($articulo){
@@ -161,7 +160,6 @@ class modeloConfiguracion extends MySQL {
                     precio1=".$articulo['precio1'].",precio2=".$articulo['precio2'].",precio3=".$articulo['precio3'].",
                     precio_contable=".$articulo['precio_contable']." where id=".$articulo['id']."
                 ";
-
         return $this->ejecutar_query_simple();
     }
     public function eliminarArticulo($articulo){

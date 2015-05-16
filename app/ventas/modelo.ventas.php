@@ -10,9 +10,9 @@ class modeloVentas extends MySQL {
                 ";
         return $this->obtener_resultados();
     }
-    public function actualizarAlmacen(){
+    public function obtenerCotizaciones(){
         $this->query = "
-                update tbl_almacen set nombre='Pruefsdafdsaba' where id=0
+                select 
                 ";
         return $this->ejecutar_query_simple();
     }
