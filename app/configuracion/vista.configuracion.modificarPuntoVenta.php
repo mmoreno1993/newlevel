@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modificar Artículo</h4>
+            <h4 class="modal-title">Modificar Punto de Venta</h4>
         </div>
         <form autocomplete="off" name="frmModificarPuntoVenta" method="POST" action="index.php?modulo=configuracion&accion=puntoventa">
             <div class="modal-body">

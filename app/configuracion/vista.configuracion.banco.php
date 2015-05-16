@@ -30,7 +30,7 @@
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Configuración</h3>
         <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.php?modulo=configuracion&accion=banco">Configuración</a></li>
+            <li><i class="fa fa-home"></i><a href="#">Configuración</a></li>
             <li><i class="fa fa-laptop"></i>Reg. Banco</li>                          
         </ol>
     </div>
@@ -80,7 +80,7 @@
                                     <td><?php echo $this->bancos[$i]['descripcion']; ?></td>
                                     <td><?php echo $this->bancos[$i]['ultima_modificacion']; ?></td>
                                     <td><a data-toggle="modal" data-target="#modal_modificar_banco" href="#" onclick="modificarBanco('index.php?modulo=configuracion&accion=modificarBanco&banco=<?php echo $this->bancos[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    <td><a href="index.php?modulo=configuracion&accion=cuentacorriente&banco=<?php echo $this->bancos[$i]['id']; ?>');"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><a href="index.php?modulo=configuracion&accion=cuentacorriente&banco=<?php echo $this->bancos[$i]['id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 </tr>
                                 <?php 
                                     }

@@ -440,36 +440,37 @@ class modeloConfiguracion extends MySQL {
     public function obtenerCuentasCorriente($cuentacorriente){
         $this->query = "
                 select id,cuenta,moneda,concat(date_format(if(isnull(fecha_modificado)=1,fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',
-                if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,activo from tbl_banco
+                if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,activo from tbl_cuenta_corriente
                 where activo=1 and tbl_banco_id=".$cuentacorriente['tbl_banco_id']."
                 ";
         return $this->obtener_resultados();
     }
     public function obtenerCuentaCorriente($cuentacorriente){
         $this->query = "
-                select id,cuenta,moneda,concat(date_format(if(isnull(fecha_modificado)=1,fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',
-                if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,activo from tbl_banco
-                where activo=1 and tbl_banco_id=".$cuentacorriente['tbl_banco_id']." and id=".$cuentacorriente['id']."
+                select id,cuenta,moneda,tbl_banco_id,concat(date_format(if(isnull(fecha_modificado)=1,fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',
+                if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,activo from tbl_cuenta_corriente
+                where activo=1 and id=".$cuentacorriente['id']."
                 ";
         return $this->obtener_resultados();
     }
     public function registrarCuentaCorriente($cuentacorriente){
         $this->query = "
-                insert into tbl_cuentacorriente(cuenta,creado_por,fecha_creado,activo) values('".$banco['descripcion']."','".$banco['creado_por']."',now(),1)
+                insert into tbl_cuenta_corriente(cuenta,moneda,tbl_banco_id,creado_por,fecha_creado,activo) values('".$cuentacorriente['cuenta']."',".$cuentacorriente['moneda'].",".$cuentacorriente['tbl_banco_id'].",'".$cuentacorriente['creado_por']."',now(),1)
                 ";
         return $this->ejecutar_query_simple();
     }
-    public function modificarBanco($banco){
+    public function modificarCuentaCorriente($cuentacorriente){
         $this->query = "
-                update tbl_banco set descripcion='".$banco['descripcion']."',modificado_por='".$banco['modificado_por']."',fecha_modificado=now() 
-                where id=".$banco['id']."
+                update tbl_cuenta_corriente set cuenta='".$cuentacorriente['cuenta']."',moneda=".$cuentacorriente['moneda'].",
+                modificado_por='".$cuentacorriente['modificado_por']."',fecha_modificado=now() 
+                where id=".$cuentacorriente['id']."
                 ";
 
         return $this->ejecutar_query_simple();
     }
-    public function eliminarBanco($banco){
+    public function eliminarCuentaCorriente($cuentacorriente){
         $this->query = "
-                update tbl_banco set activo=0 where id=".$banco['id']."
+                update tbl_cuenta_corriente set activo=0 where id=".$cuentacorriente['id']."
                 ";
         return $this->ejecutar_query_simple();
     }

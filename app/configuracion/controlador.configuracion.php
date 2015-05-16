@@ -383,35 +383,39 @@ class configuracion extends App {
     public function cuentacorriente(){
         if(isset($_POST['btnNuevaCuentaCorriente'])){
             $this->modelo->registrarCuentaCorriente(array(
-                'descripcion' => $_POST['txtdescripcion'],
+                'cuenta' => $_POST['txtcuentacorriente'],
+                'moneda' => $_POST['cmbMoneda'],
+                'tbl_banco_id' => $_POST['banco'],
                 'creado_por' => $_SESSION['user']['nombre']
                 ));
-            header('Location:index.php?modulo=configuracion&accion=banco');
+            header('Location:index.php?modulo=configuracion&accion=cuentacorriente&banco='.$_POST['banco']);
         }
-        if(isset($_POST['btnModificarBanco'])){
-            $this->modelo->modificarBanco(array(
+        if(isset($_POST['btnModificarCuentaCorriente'])){
+
+            $this->modelo->modificarCuentaCorriente(array(
                 'id' => $_POST['txtid'],
-                'descripcion' => $_POST['txtdescripcion'],
+                'cuenta' => $_POST['txtcuentacorriente'],
+                'moneda' => $_POST['cmbMoneda'],
                 'modificado_por' => $_SESSION['user']['nombre'],
                 ));
-            header('Location:index.php?modulo=configuracion&accion=banco');
+            header('Location:index.php?modulo=configuracion&accion=cuentacorriente&banco='.$_POST['banco']);
         }
-        if(isset($_POST['btnEliminarBanco'])){
-            foreach ($_POST['chkBanco'] as $val) {
-                $this->modelo->eliminarBanco(array(
+        if(isset($_POST['btnEliminarCuentaCorriente'])){
+            foreach ($_POST['chkCuentaCorriente'] as $val) {
+                $this->modelo->eliminarCuentaCorriente(array(
                 'id' => $val,
                 'modificado_por' => $_SESSION['user']['nombre']
                 ));
             }
             
-            header('Location:index.php?modulo=configuracion&accion=banco');
+            header('Location:index.php?modulo=configuracion&accion=cuentacorriente&banco='.$_POST['banco']);
         }
-        $this->vista->bancos = $this->modelo->obtenerBancos();
-        
+        //$this->vista->bancos = $this->modelo->obtenerBancos();
+        $this->vista->cuentascorriente = $this->modelo->obtenerCuentasCorriente(array('tbl_banco_id'=>$_GET['banco']));
     }
-    public function modificarBanco(){
-        $this->vista->banco = $this->modelo->obtenerBanco(array(
-            'id' => $_GET['banco']
+    public function modificarCuentaCorriente(){
+        $this->vista->cuentacorriente = $this->modelo->obtenerCuentaCorriente(array(
+            'id' => $_GET['cuentacorriente']
             ));
     }
 }

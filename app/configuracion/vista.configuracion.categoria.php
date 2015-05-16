@@ -40,7 +40,7 @@
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Configuración</h3>
         <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.php?modulo=configuracion&accion=articulo">Configuración</a></li>
+            <li><i class="fa fa-home"></i><a href="#">Configuración</a></li>
             <li><i class="fa fa-laptop"></i>Reg. Artículos</li>                          
         </ol>
     </div>
