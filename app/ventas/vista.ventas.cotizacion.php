@@ -11,7 +11,7 @@
                     <label for="txt">Almacen:</label>
                     <input />
                     -->
-                    Falta planificar
+                    
                 </form>
             </div>
             <div class="modal-footer">

@@ -52,7 +52,7 @@
                             </form>
                         </div>
                         <div class="panel-footer" align="center">
-                            Copyright © Moisés
+                            
                         </div>
                     </div>
                     <a href="#">Olvide mi contraseña</a>
