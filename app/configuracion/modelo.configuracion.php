@@ -289,56 +289,6 @@ class modeloConfiguracion extends MySQL {
         return $this->ejecutar_query_simple();
     }
 
-    public function obtenerUsuarios(){
-        $this->query = "
-                select id,apepat,apemat,nombre_1,nombre_2,correo,password,alias,telefono,direccion,dni,fecha_nacimiento,
-                concat(date_format(if(isnull(fecha_modificado) =1,fecha_creado,fecha_modificado),
-                '%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,
-                activo,tbl_trabajador_id,tipo_usuario from tbl_usuario where activo=1
-                ";
-        return $this->obtener_resultados();
-    }
-    public function obtenerUsuario($usuario){
-        $this->query = "
-                id,apepat,apemat,nombre_1,nombre_2,correo,password,alias,telefono,direccion,dni,fecha_nacimiento,
-                concat(date_format(if(isnull(fecha_modificado) =1,fecha_creado,fecha_modificado),
-                '%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) as ultima_modificacion,
-                activo,tbl_trabajador_id,tipo_usuario from tbl_usuario where activo=1 and id=".$usuario['id']."
-                ";
-        return $this->obtener_resultados();
-    }
-    public function registrarUsuario($usuario){
-        $this->query = "
-                insert into tbl_usuario(apepat,apemat,nombre_1,nombre_2,correo,password,alias,telefono,direccion,dni,
-                fecha_nacimiento,creado_por,fecha_creado,activo) values('".$usuario['apepat']."','".$usuario['apemat']."',
-                '".$usuario['nombre_1']."','".$usuario['nombre_2']."','".$usuario['correo']."','".$usuario['password']."',
-                '".$usuario['alias']."','".$usuario['telefono']."','".$usuario['direccion']."','".$usuario['dni']."',
-                '".$usuario['fecha_nacimiento']."','".$usuario['creado_por']."',now(),1)
-                ";
-                
-        return $this->ejecutar_query_simple();
-    }
-    public function modificarUsuario($usuario){
-        $this->query = "
-                update tbl_usuario set apepat='".$usuario['apepat']."',apemat='".$usuario['apemat']."',
-                nombre_1='".$usuario['nombre_1']."',nombre_2='".$usuario['nombre_2']."',correo='".$usuario['correo']."',
-                password='".$usuario['password']."',telefono='".$usuario['telefono']."',
-                direccion='".$usuario['direccion']."',dni='".$usuario['dni']."',
-                fecha_nacimiento='".$usuario['fecha_nacimiento']."',modificado_por='".$usuario['modificado_por']."',
-                fecha_modificado=now() 
-                where id=".$usuario['id']."
-                ";
-
-        return $this->ejecutar_query_simple();
-    }
-
-
-    public function eliminarUsuario($usuario){
-        $this->query = "
-                update tbl_usuario set activo=0 where id=".$usuario['id']."
-                ";
-        return $this->ejecutar_query_simple();
-    }
 
     public function cambiarClave($antigua,$nueva,$confirma,$modificado_por,$id){
         $this->query = "
@@ -524,6 +474,58 @@ class modeloConfiguracion extends MySQL {
     public function eliminarCliente($cliente){
         $this->query = "
                 update tbl_cliente set activo=0 where id=".$cliente['id']."
+                ";
+        return $this->ejecutar_query_simple();
+    }
+
+
+    public function obtenerUsuarios(){
+        $this->query = "
+                select id,apepat,apemat,nombre_1,nombre_2, concat(apepat,' ',nombre_1) as usuario,correo,password,
+                alias,telefono,direccion,dni,fecha_nacimiento,concat(date_format(if(isnull(fecha_modificado)=1,
+                fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,
+                modificado_por)) as ultima_modificacion,activo,tipo_usuario from tbl_usuario
+                where activo=1
+                ";
+        return $this->obtener_resultados();
+    }
+    public function obtenerUsuario($usuario){
+        $this->query = "
+                select id,apepat,apemat,nombre_1,nombre_2, concat(apepat,' ',nombre_1) as usuario,correo,password,
+                alias,telefono,direccion,dni,fecha_nacimiento,concat(date_format(if(isnull(fecha_modificado)=1,
+                fecha_creado,fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,
+                modificado_por)) as ultima_modificacion,activo,tipo_usuario from tbl_usuario
+                where activo=1 and id=".$usuario['id']."
+                ";
+        return $this->obtener_resultados();
+    }
+    public function registrarUsuario($usuario){
+        $this->query = "
+                insert into tbl_usuario(apepat,apemat,nombre_1,nombre_2,correo,password,alias,telefono,direccion,dni,
+                fecha_nacimiento,creado_por,fecha_creado,activo,tipo_usuario) values('".$usuario['apepat']."',
+                '".$usuario['apemat']."','".$usuario['nombre_1']."','".$usuario['nombre_2']."','".$usuario['correo']."',
+                '".$usuario['password']."','".$usuario['alias']."','".$usuario['telefono']."','".$usuario['direccion']."',
+                '".$usuario['dni']."','".$usuario['fecha_nacimiento']."','".$usuario['creado_por']."',now(),1,
+                ".$usuario['tipo_usuario'].")
+                ";
+        return $this->ejecutar_query_simple();
+    }
+    public function modificarUsuario($usuario){
+        $this->query = "
+                update tbl_usuario set apepat='".$usuario['apepat']."',apemat='".$usuario['apemat']."',nombre_1='".$usuario['nombre_1']."',
+                nombre_2='".$usuario['nombre_2']."',correo='".$usuario['correo']."',password='".$usuario['password']."',
+                alias='".$usuario['alias']."',telefono='".$usuario['telefono']."',direccion='".$usuario['direccion']."',
+                dni='".$usuario['dni']."',fecha_nacimiento='".$usuario['fecha_nacimiento']."',
+                modificado_por='".$usuario['modificado_por']."',
+                fecha_modificado=now(),tipo_usuario=".$usuario['tipo_usuario']."
+                where id=".$banco['id']."
+                ";
+
+        return $this->ejecutar_query_simple();
+    }
+    public function eliminarUsuario($usuario){
+        $this->query = "
+                update tbl_usuario set activo=0 where id=".$usuario['id']."
                 ";
         return $this->ejecutar_query_simple();
     }

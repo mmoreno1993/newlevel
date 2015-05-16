@@ -470,5 +470,59 @@ class configuracion extends App {
             'id' => $_GET['cliente']
             ));
     }
+
+
+    public function usuario(){
+        if(isset($_POST['btnNuevoUsuario'])){
+            $this->modelo->registrarUsuario(array(
+                'apepat' => $_POST['txtapepat'],
+                'apemat' => $_POST['txtapemat'],
+                'nombre_1' => $_POST['txtnombre_1'],
+                'nombre_2' => $_POST['txtnombre_2'],
+                'correo' => $_POST['txtcorreo'],
+                'alias' => $_POST['txtalias'],
+                'password' => $_POST['txtpassword'],
+                'direccion' => $_POST['txtdireccion'],
+                'telefono' => $_POST['txttelefono'],
+                'tipo_usuario' => $_POST['rdtipousuario'],
+                'creado_por' => $_SESSION['user']['nombre']
+                ));
+            header('Location:index.php?modulo=configuracion&accion=usuario');
+        }
+        if(isset($_POST['btnModificaUsuario'])){
+            $this->modelo->modificarUsuario(array(
+                'id' => $_POST['txtid'],
+                'apepat' => $_POST['txtapepat'],
+                'apemat' => $_POST['txtapemat'],
+                'nombre_1' => $_POST['txtnombre_1'],
+                'nombre_2' => $_POST['txtnombre_2'],
+                'correo' => $_POST['txtcorreo'],
+                'alias' => $_POST['txtalias'],
+                'password' => $_POST['txtpassword'],
+                'direccion' => $_POST['txtdireccion'],
+                'telefono' => $_POST['txttelefono'],
+                'tipo_usuario' => $_POST['rdtipousuario'],
+                'modificado_por' => $_SESSION['user']['nombre'],
+                ));
+            header('Location:index.php?modulo=configuracion&accion=usuario');
+        }
+        if(isset($_POST['btnEliminarUsuario'])){
+            foreach ($_POST['chkUsuario'] as $val) {
+                $this->modelo->eliminarUsuario(array(
+                'id' => $val,
+                'modificado_por' => $_SESSION['user']['nombre']
+                ));
+            }
+            header('Location:index.php?modulo=configuracion&accion=usuario');
+        }
+        $this->vista->usuarios = $this->modelo->obtenerUsuarios();
+        
+    }
+    public function modificarUsuario(){
+        $this->vista->banco = $this->modelo->obtenerUsuario(array(
+            'id' => $_GET['banco']
+            ));
+    }
+
 }
 ?>

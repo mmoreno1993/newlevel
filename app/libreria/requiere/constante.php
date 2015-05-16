@@ -11,10 +11,10 @@ define('MODULO_DEFAULT', 'acceso');
 define('ACCION_DEFAULT', 'index');
 
 //CONEXION A BASE DE DATOS
-define('HOST_BASE_DATOS','mmorenoel.mssql.somee.com');
-define('USUARIO_BASE_DATOS','burakkiumbreon_SQLLogin_1');
-define('CLAVE_BASE_DATOS','13pika13');
-define('NOMBRE_BASE_DATOS','mmorenoel');
+define('HOST_BASE_DATOS','');
+define('USUARIO_BASE_DATOS','');
+define('CLAVE_BASE_DATOS','');
+define('NOMBRE_BASE_DATOS','');
 define('CHARSET_BASE_DATOS','UTF-8');
 
 //ENVIO MENSAJES
