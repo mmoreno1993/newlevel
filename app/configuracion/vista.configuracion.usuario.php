@@ -1,4 +1,4 @@
-<div id="modal_nuevo_color" class="modal fade">
+<div id="modal_nuevo_usuario" data-backdrop="static" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,7 +14,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="txtpassword">Password(*)</label>
-                            <input required id="txtpassword" name="txtdescripcion" class="form-control" type="text" />
+                            <input required id="txtpassword" name="txtpassword" class="form-control" type="password" />
                         </div>
                     </div>
                     <div class="row">
@@ -73,6 +73,10 @@
                         <div class="col-sm-12">
                             <br>
                             <label>Tipo de Usuario</label>
+                            <select>
+                                <option value="0">Usuario</option>
+                                <option value="0">Administrador</option>
+                            </select>
                         </div>
                         <div class="col-sm-6">
                             <label for="rdtipousuario_1">Administrador</label><input id="rdtipousuario_1" value="1" name="rdtipousuario" type="radio" />
@@ -97,7 +101,7 @@
         </div>
     </div>
 </div>
-<div id="modal_modificar_usuario" class="modal fade">
+<div id="modal_modificar_usuario" data-backdrop="static" class="modal fade">
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -116,25 +120,8 @@
             </div>
             <div class="panel-body">
                 <form action="index.php?modulo=configuracion&accion=usuario" method="POST">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label>Filtro por:</label>
-                            <select class="form-control">
-                                <option selected>Fecha</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Desde:</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Hasta:</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered display tablafiltro">
                             <thead>
                                 <tr class="info">
                                     <th>&nbsp;</th>
@@ -149,10 +136,11 @@
                                     for ($i=0; $i < count($this->usuarios) ; $i++) { 
                                 ?>
                                 <tr>
-                                    <td><input name="chkUsuarios[]" value="<?php echo $this->usuarios[$i]['id']; ?>" type="checkbox" /></td>
+                                    <td><input name="chkUsuario[]" value="<?php echo $this->usuarios[$i]['id']; ?>" type="checkbox" /></td>
                                     <td><?php echo $this->usuarios[$i]['usuario']; ?></td>
+                                    <td>****</td>
                                     <td><?php echo $this->usuarios[$i]['ultima_modificacion']; ?></td>
-                                    <td><a data-toggle="modal" data-target="#modal_modificar_usuario" href="#" onclick="modificarColor('index.php?modulo=configuracion&accion=modificarUsuario&usuario=<?php echo $this->usuarios[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><a data-toggle="modal" data-target="#modal_modificar_usuario" href="#" onclick="modificarUsuario('index.php?modulo=configuracion&accion=modificarUsuario&usuario=<?php echo $this->usuarios[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 </tr>
                                 <?php 
                                     }
@@ -161,15 +149,15 @@
                         </table>
                     </div>
                     <div align="center">
-                        <button style="width:100px;" data-toggle="modal" data-target="#modal_nuevo_color" class="btn btn-primary">
+                        <button style="width:100px;" data-toggle="modal" data-target="#modal_nuevo_usuario" class="btn btn-primary">
                             <span class="glyphicon glyphicon-plus"></span>
                             Nuevo
                         </button>
-                        <button name="btnEliminarColor" type="submit" style="width:100px;" class="btn btn-primary">
+                        <button name="btnEliminarUsuario" type="submit" style="width:100px;" class="btn btn-primary">
                             <span class="glyphicon glyphicon-remove"></span>
                             Eliminar
                         </button>
-                        <button style="width:100px;" class="btn btn-primary">
+                        <button disabled style="width:100px;" class="btn btn-primary">
                             <i class="icon_document_alt"></i>
                             Reporte
                         </button>    
@@ -180,7 +168,7 @@
     </div>
 </div>
 <script>
-function modificarColor(url){
-    $('#modal_modificar_color').load(url);
+function modificarUsuario(url){
+    $('#modal_modificar_usuario').load(url);
 }
 </script>

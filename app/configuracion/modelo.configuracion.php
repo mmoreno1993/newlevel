@@ -307,27 +307,43 @@ class modeloConfiguracion extends MySQL {
         $this->query = "
                 select id,cambio_compra,cambio_venta,date_format(fecha,'%d/%m/%Y') as fecha,concat(date_format(if(isnull(fecha_modificado) =1,fecha_creado,
                 fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) 
-                as ultima_modificacion,activo from tbl_tipocambio where activo=1
+                as ultima_modificacion,activo from tbl_tipocambio where activo=1 order by fecha asc
                 ";
 
         return $this->obtener_resultados();
     }
     public function obtenerTipoCambio($tipocambio){
         $this->query = "
-                select id,cambio_compra,cambio_venta,date_format(fecha,'%d/%m/%Y') as fecha,concat(date_format(if(isnull(fecha_modificado) =1,fecha_creado,
+                select id,cambio_compra,cambio_venta,date_format(fecha,'%d/%m/%Y') as fecha,fecha as fecha_,concat(date_format(if(isnull(fecha_modificado) =1,fecha_creado,
                 fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) 
                 as ultima_modificacion,activo from tbl_tipocambio where activo=1 
                 and id=".$tipocambio['id']."
                 ";
         return $this->obtener_resultados();
     }
-    public function registrarTipoCambio($tipocambio){
+    public function obtenerTipoCambioxFecha($tipocambio){
         $this->query = "
-                insert into tbl_tipocambio(cambio_compra,cambio_venta,fecha,
-                creado_por,fecha_creado,activo) values(".$tipocambio['cambio_compra'].",".$tipocambio['cambio_venta'].",
-                '".$tipocambio['fecha']."','".$tipocambio['creado_por']."',now(),1)
-                ";
-                
+            select id,cambio_compra,cambio_venta,date_format(fecha,'%d/%m/%Y') as fecha,fecha as fecha_,concat(date_format(if(isnull(fecha_modificado) =1,fecha_creado,
+            fecha_modificado),'%d/%m/%Y %h:%i %p'),' por ',if(isnull(modificado_por)=1,creado_por,modificado_por)) 
+            as ultima_modificacion,activo from tbl_tipocambio where activo=1 
+            and fecha='".$tipocambio['fecha']."'
+            ";
+
+        return $this->obtener_resultados();
+    }
+    public function registrarTipoCambio($tipocambio){
+        $tc = $this->obtenerTipoCambioxFecha($tipocambio);
+        if(count($tc)>0){
+            $this->query = "select ''";
+        }
+        else
+        {
+            $this->query = "
+            insert into tbl_tipocambio(cambio_compra,cambio_venta,fecha,
+            creado_por,fecha_creado,activo) values(".$tipocambio['cambio_compra'].",".$tipocambio['cambio_venta'].",
+            '".$tipocambio['fecha']."','".$tipocambio['creado_por']."',now(),1)
+            ";
+        }        
         return $this->ejecutar_query_simple();
     }
     public function modificarTipoCambio($tipocambio){
@@ -518,7 +534,7 @@ class modeloConfiguracion extends MySQL {
                 dni='".$usuario['dni']."',fecha_nacimiento='".$usuario['fecha_nacimiento']."',
                 modificado_por='".$usuario['modificado_por']."',
                 fecha_modificado=now(),tipo_usuario=".$usuario['tipo_usuario']."
-                where id=".$banco['id']."
+                where id=".$usuario['id']."
                 ";
 
         return $this->ejecutar_query_simple();

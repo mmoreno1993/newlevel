@@ -37,7 +37,7 @@
     <link href="assets/datapicker/jquery-ui.css" rel="stylesheet">
     <link href="assets/datapicker/jquery-ui.theme.css" rel="stylesheet">
     <link href="assets/datapicker/jquery-ui.structure.css" rel="stylesheet">
-    <script type="text/javascript" src="assets/datapicker/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 
   </head>
 

@@ -1,17 +1,13 @@
-<div id="modal_newcot" class="modal fade">
+<div id="modal_newpedido" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nueva Cotización</h4>
+                <h4 class="modal-title">Nuevo Pedido</h4>
             </div>
             <div class="modal-body">
                 <form>
-                    <!--
-                    <label for="txt">Almacen:</label>
-                    <input />
-                    -->
-                    
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -32,7 +28,7 @@
         <h3 class="page-header"><i class="icon_document_alt"></i> Ventas</h3>
         <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="#">Ventas</a></li>
-            <li><i class="fa fa-laptop"></i>Cotizacion</li>                          
+            <li><i class="fa fa-laptop"></i>Pedido</li>                          
         </ol>
     </div>
 </div>
@@ -40,7 +36,7 @@
     <div class="col-xs-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <font color="white"><b>Registro de Cotizaciones</b></font>
+                <font color="white"><b>Registro de Pedidos</b></font>
             </div>
             <div class="panel-body">
                 <form action="" method="POST">
@@ -70,6 +66,7 @@
                                     <th>Documento</th>
                                     <th>Fecha de Registro</th>
                                     <th>Total</th>
+                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,6 +76,7 @@
                                     <td>0010000007</td>
                                     <td>25/04/2015</td>
                                     <td>1000</td>
+                                    <td>Anulado</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
@@ -86,6 +84,7 @@
                                     <td>0010000015</td>
                                     <td>26/04/2015</td>
                                     <td>7000</td>
+                                    <td>Registrado</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
@@ -93,6 +92,7 @@
                                     <td>0020060005</td>
                                     <td>27/04/2015</td>
                                     <td>500</td>
+                                    <td>Despachado</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" /></td>
@@ -100,6 +100,7 @@
                                     <td>0010000062</td>
                                     <td>29/04/2015</td>
                                     <td>1230</td>
+                                    <td>Despachado</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -120,7 +121,11 @@
                         <button style="width:100px;" class="btn btn-primary">
                             <i class="icon_document_alt"></i>
                             Reporte
-                        </button>    
+                        </button>
+                        <button style="width:100px;" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-check"></i>
+                            C. Estado
+                        </button>
                     </div>
                     
                 </form>

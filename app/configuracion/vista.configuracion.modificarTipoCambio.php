@@ -12,7 +12,7 @@
                 <label for="txtcambioventa">Venta</label>
                 <input value="<?php echo $this->tipocambio[0]['cambio_venta'] ?>" id="txtcambioventa" name="txtcambioventa" class="form-control" type="text" />
                 <label for="txtfecha">Fecha</label>
-                <input required value="<?php echo substr($this->tipocambio[0]['fecha'],0,10) ?>" id="txtfecha" name="txtfecha" class="form-control datepicker" type="text" />
+                <input readonly required id="txtfecha" name="txtfecha" value="<?php echo substr($this->tipocambio[0]['fecha_'],0,10); ?>" class="form-control datepicker" type="text" />
             </div>
             <div class="modal-footer">
                 <button name="btnModificarTipoCambio" type="submit" class="btn btn-primary">

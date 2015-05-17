@@ -6,9 +6,9 @@
 
     <!-- javascripts -->
     <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui-1.10.4.min.js"></script>
+    
     <script src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <!-- bootstrap -->
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
@@ -44,6 +44,7 @@
     <script src="js/sparklines.js"></script>    
     <script src="js/charts.js"></script>
     <script src="js/jquery.slimscroll.min.js"></script>
+
   <script>
 
       //knob
@@ -89,16 +90,32 @@
         }
       });
     });
+</script>
+<script type="text/javascript" src="assets/datapicker/jquery-ui.js"></script>
+<script>
+$(document).on('ready',function(){
+  $('.datepicker').datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+$('.tablafiltro').dataTable( {
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por pagina",
+            "zeroRecords": "No hay registros",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(Filtrando para _MAX_ registros)"
+        }
+    } );
+  $("#cmbautomatico").on('change',function () {
+      if($("#cmbautomatico option:selected").val()==0){
+          $('#txtnumero').attr('readonly','');
+          $('#txtnumero').attr('value','');
+      }else{
+          $('#txtnumero').removeAttr('readonly');
+      }
+  });
+});
+</script>
 
-
-
-  </script>
-    <script>
-        $(document).on('ready',function(){
-            $('.datepicker').datepicker({
-              dateFormat: "yy-mm-dd"
-            });
-        });
-    </script>
-  </body>
+</body>
 </html>

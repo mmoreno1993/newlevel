@@ -1,4 +1,4 @@
-<div id="modal_nuevo_tipocambio" class="modal fade">
+<div id="modal_nuevo_tipocambio" data-backdrop="static" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<div id="modal_modificar_tipocambio" class="modal fade">
+<div id="modal_modificar_tipocambio" data-backdrop="static" class="modal fade">
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -47,25 +47,8 @@
             </div>
             <div class="panel-body">
                 <form action="index.php?modulo=configuracion&accion=tipocambio" method="POST">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label>Filtro por:</label>
-                            <select class="form-control">
-                                <option selected>Fecha</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Desde:</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Hasta:</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered display tablafiltro">
                             <thead>
                                 <tr class="info">
                                     <th>&nbsp;</th>
@@ -86,7 +69,7 @@
                                     <td><?php echo $this->tiposcambio[$i]['cambio_compra']; ?></td>
                                     <td><?php echo $this->tiposcambio[$i]['cambio_venta']; ?></td>
                                     <td><?php echo $this->tiposcambio[$i]['ultima_modificacion']; ?></td>
-                                    <td><a data-toggle="modal" data-target="#modal_modificar_tipocambio" href="#" onclick="modificarAlmacen('index.php?modulo=configuracion&accion=modificarTipoCambio&tipocambio=<?php echo $this->tiposcambio[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><a data-toggle="modal" data-target="#modal_modificar_tipocambio" href="#" onclick="modificarTipoCambio('index.php?modulo=configuracion&accion=modificarTipoCambio&tipocambio=<?php echo $this->tiposcambio[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 </tr>
                                 <?php 
                                     }
@@ -103,7 +86,7 @@
                             <span class="glyphicon glyphicon-remove"></span>
                             Eliminar
                         </button>
-                        <button style="width:100px;" class="btn btn-primary">
+                        <button disabled style="width:100px;" class="btn btn-primary">
                             <i class="icon_document_alt"></i>
                             Reporte
                         </button>    

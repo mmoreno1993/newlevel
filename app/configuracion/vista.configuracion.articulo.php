@@ -1,4 +1,4 @@
-<div id="modal_nuevo_articulo" class="modal fade">
+<div id="modal_nuevo_articulo" data-backdrop="static" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -103,7 +103,7 @@
         </div>
     </div>
 </div>
-<div id="modal_modificar_articulo" class="modal fade">
+<div id="modal_modificar_articulo" data-backdrop="static" class="modal fade">
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -122,25 +122,8 @@
             </div>
             <div class="panel-body">
                 <form action="" method="POST">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label>Filtro por:</label>
-                            <select class="form-control">
-                                <option selected>Fecha</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Desde:</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Hasta:</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered display tablafiltro">
                             <thead>
                                 <tr class="info">
                                     <th>&nbsp;</th>
@@ -177,7 +160,7 @@
                             <span class="glyphicon glyphicon-remove"></span>
                             Eliminar
                         </button>
-                        <button style="width:100px;" class="btn btn-primary">
+                        <button disabled style="width:100px;" class="btn btn-primary">
                             <i class="icon_document_alt"></i>
                             Reporte
                         </button>    

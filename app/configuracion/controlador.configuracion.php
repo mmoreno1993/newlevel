@@ -484,12 +484,18 @@ class configuracion extends App {
                 'password' => $_POST['txtpassword'],
                 'direccion' => $_POST['txtdireccion'],
                 'telefono' => $_POST['txttelefono'],
+                'dni' => $_POST['txtdni'],
+                'fecha_nacimiento' => $_POST['txtfechanacimiento'],
                 'tipo_usuario' => $_POST['rdtipousuario'],
                 'creado_por' => $_SESSION['user']['nombre']
                 ));
             header('Location:index.php?modulo=configuracion&accion=usuario');
         }
-        if(isset($_POST['btnModificaUsuario'])){
+        if(isset($_POST['btnModificarUsuario'])){
+            if(!isset($_POST['rdtipousuario']))
+            {
+                $_POST['rdtipousuario'] = 'null';
+            }
             $this->modelo->modificarUsuario(array(
                 'id' => $_POST['txtid'],
                 'apepat' => $_POST['txtapepat'],
@@ -501,6 +507,8 @@ class configuracion extends App {
                 'password' => $_POST['txtpassword'],
                 'direccion' => $_POST['txtdireccion'],
                 'telefono' => $_POST['txttelefono'],
+                'dni' => $_POST['txtdni'],
+                'fecha_nacimiento' => $_POST['txtfechanacimiento_'],
                 'tipo_usuario' => $_POST['rdtipousuario'],
                 'modificado_por' => $_SESSION['user']['nombre'],
                 ));
@@ -519,8 +527,8 @@ class configuracion extends App {
         
     }
     public function modificarUsuario(){
-        $this->vista->banco = $this->modelo->obtenerUsuario(array(
-            'id' => $_GET['banco']
+        $this->vista->usuario = $this->modelo->obtenerUsuario(array(
+            'id' => $_GET['usuario']
             ));
     }
 
