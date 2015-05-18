@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-05-2015 a las 13:19:58
+-- Tiempo de generación: 18-05-2015 a las 12:38:19
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `tbl_almacen` (
 
 INSERT INTO `tbl_almacen` (`id`, `descripcion`, `direccion`, `telefono`, `almacen_cercano`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
 (1, 'Almacen 1', '-', '-', NULL, 'Moisés Moreno', '2015-05-15 01:06:34', NULL, NULL, b'1'),
-(2, 'Almacen 2', '-', '-', NULL, 'Moisés Moreno', '2015-05-15 01:06:57', NULL, NULL, b'1');
+(2, 'Almacen 2', '-', '-', NULL, 'Moisés Moreno', '2015-05-15 01:06:57', 'Moreno Moisés', '2015-05-16 10:29:17', b'1');
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ INSERT INTO `tbl_articulo` (`id`, `descripcion`, `codigo_alterno`, `tbl_familia_
 (1, 'Artículo 1', 'C00001', 1, NULL, NULL, NULL, 0, 0, 0, 0, 'Moisés Moreno', '2015-05-11 06:08:24', NULL, NULL, b'1', NULL),
 (4, 'Artículo 2', '1234', 1, NULL, NULL, NULL, 0, 0, 0, 0, 'Moisés Moreno', '2015-05-13 06:28:53', NULL, NULL, b'1', ''),
 (5, 'Lapicero', 'ss', 1, NULL, 1, NULL, 1, 0, 0, 0, 'Moisés Moreno', '2015-05-13 06:43:02', 'Moreno Moisés', '2015-05-16 07:55:47', b'1', ''),
-(6, 'd', 'd', NULL, NULL, NULL, NULL, 0, 0, 0, 0, 'Moisés Moreno', '2015-05-13 06:43:24', NULL, NULL, b'1', '');
+(6, 'Artículo Prueba', 'a0001', 1, NULL, NULL, NULL, 0, 0, 0, 0, 'Moisés Moreno', '2015-05-13 06:43:24', 'Moreno Moisés', '2015-05-16 10:02:38', b'1', '');
 
 -- --------------------------------------------------------
 
@@ -274,18 +274,20 @@ CREATE TABLE IF NOT EXISTS `tbl_cliente` (
   `modificado_por` varchar(85) DEFAULT NULL,
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
-  `tipo_cliente` bit(1) DEFAULT NULL,
+  `tipo_cliente` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `tbl_cliente`
 --
 
 INSERT INTO `tbl_cliente` (`id`, `razonsocial`, `grupo`, `ruc`, `direccion`, `contacto`, `telefono_fijo`, `telefono_fax`, `telefono_movil`, `cuenta_inicial_soles`, `cuenta_inicial_dolares`, `cuenta_inicial_soles_fecha`, `cuenta_inicial_dolares_fecha`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`, `tipo_cliente`) VALUES
-(1, '', '', '21212121', '', '', '4824789', NULL, '4246456', 43242432, 243432432, '2015-05-05 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 01:49:34', NULL, NULL, b'0', NULL),
-(2, 'Moisés', '', '2121212121', '-', 'fdsafsa', 'dfsaf', NULL, '4342', 2000, 4000, '2015-05-16 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 01:55:09', NULL, NULL, b'1', NULL),
-(3, 'fdsafdsa', '', '2121', 'ddd', 'cccc', 'tttt', NULL, 'sadfsadfsa', 1321.1, 4124.4, '2015-05-28 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 02:11:40', 'Moreno Moisés', '2015-05-16 02:12:48', b'1', NULL);
+(1, '', '', '21212121', '', '', '4824789', NULL, '4246456', 43242432, 243432432, '2015-05-05 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 01:49:34', NULL, NULL, b'0', 1),
+(2, 'Jorge Armando', 'dsds', '2121212121', '-', 'fdsafsa', 'dfsaf', NULL, '4342', 2000, 4000, '2015-05-16 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 01:55:09', 'Moreno Moisés', '2015-05-17 23:13:19', b'1', 3),
+(3, 'Cliente 1', '', '2121', '-', '----', '---', NULL, '----', 1321.1, 4124.4, '2015-05-28 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 02:11:40', 'Moreno Moisés', '2015-05-16 10:28:13', b'1', 1),
+(4, 'Cliente Prueba', '', '', 'Prueba', 'Prueba', 'Prueba', NULL, 'Prueba', 10000, 20000, '2015-05-16 00:00:00', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 10:28:53', NULL, NULL, b'1', 1),
+(5, 'fdsafdsafas', 'saa', '2121312321', 'fsadfdsa', 'fsadfsa', 'fdsafdsa', NULL, 'safsaf', 123, 123, '2015-05-18 00:00:00', '2015-05-18 00:00:00', 'Moreno Moisés', '2015-05-17 23:13:37', NULL, NULL, b'1', 2);
 
 -- --------------------------------------------------------
 
@@ -337,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `tbl_color` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `tbl_color`
@@ -345,7 +347,16 @@ CREATE TABLE IF NOT EXISTS `tbl_color` (
 
 INSERT INTO `tbl_color` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
 (1, 'Rojo', 'Moisés Moreno', '2015-05-04 04:00:00', NULL, NULL, b'1'),
-(2, 'Azul', 'Moisés Moreno', '2015-05-05 18:25:00', 'Moisés Moreno', '2015-05-15 01:06:03', b'1');
+(2, 'Azul', 'Moisés Moreno', '2015-05-05 18:25:00', 'Moisés Moreno', '2015-05-15 01:06:03', b'1'),
+(3, 'Amarillo', 'Moreno Moisés', '2015-05-17 08:45:03', NULL, NULL, b'1'),
+(4, 'Verde', 'Moreno Moisés', '2015-05-17 08:45:07', NULL, NULL, b'1'),
+(5, 'Morado', 'Moreno Moisés', '2015-05-17 08:45:13', NULL, NULL, b'1'),
+(6, 'Blanco', 'Moreno Moisés', '2015-05-17 08:45:21', NULL, NULL, b'1'),
+(7, 'Naranja', 'Moreno Moisés', '2015-05-17 08:45:26', NULL, NULL, b'1'),
+(8, 'Celeste', 'Moreno Moisés', '2015-05-17 08:45:34', NULL, NULL, b'1'),
+(9, 'Marron', 'Moreno Moisés', '2015-05-17 08:45:39', NULL, NULL, b'1'),
+(10, 'Negro', 'Moreno Moisés', '2015-05-17 08:45:50', NULL, NULL, b'1'),
+(11, 'Plomo', 'Moreno Moisés', '2015-05-17 08:45:59', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -392,55 +403,6 @@ CREATE TABLE IF NOT EXISTS `tbl_contactotransportista` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_cotcab`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_cotcab` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `numero` varchar(20) DEFAULT NULL,
-  `fecha_registro` date NOT NULL,
-  `fecha_vigente` date DEFAULT NULL,
-  `moneda` bit(1) NOT NULL,
-  `glosa` varchar(500) NOT NULL,
-  `tbl_cliente_id` int(11) NOT NULL,
-  `tbl_estado_cotizacion_id` int(11) DEFAULT NULL,
-  `creado_por` varchar(200) DEFAULT NULL,
-  `fecha_creado` datetime DEFAULT NULL,
-  `modificado_por` varchar(200) DEFAULT NULL,
-  `fecha_modificado` datetime DEFAULT NULL,
-  `activo` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tbl_cliente_id` (`tbl_cliente_id`),
-  KEY `tbl_estado_cotizacion_id` (`tbl_estado_cotizacion_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_cotdet`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_cotdet` (
-  `id` int(11) NOT NULL,
-  `tbl_cotcab_id` int(11) NOT NULL,
-  `tbl_articulo_id` int(11) NOT NULL,
-  `glosa` varchar(500) NOT NULL,
-  `cantidad` double NOT NULL,
-  `bruto` double NOT NULL,
-  `igv` double NOT NULL,
-  `creado_por` varchar(200) DEFAULT NULL,
-  `fecha_creado` datetime DEFAULT NULL,
-  `modificado_por` varchar(200) DEFAULT NULL,
-  `fecha_modificado` datetime DEFAULT NULL,
-  `activo` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tbl_cotcab_id` (`tbl_cotcab_id`,`tbl_articulo_id`),
-  KEY `tbl_articulo_id` (`tbl_articulo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tbl_cuenta_corriente`
 --
 
@@ -474,10 +436,10 @@ INSERT INTO `tbl_cuenta_corriente` (`id`, `cuenta`, `moneda`, `tbl_banco_id`, `c
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbl_estado_cotizacion`
+-- Estructura de tabla para la tabla `tbl_estado_pedido`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_estado_cotizacion` (
+CREATE TABLE IF NOT EXISTS `tbl_estado_pedido` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(200) NOT NULL,
   `creado_por` varchar(200) DEFAULT NULL,
@@ -489,10 +451,10 @@ CREATE TABLE IF NOT EXISTS `tbl_estado_cotizacion` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `tbl_estado_cotizacion`
+-- Volcado de datos para la tabla `tbl_estado_pedido`
 --
 
-INSERT INTO `tbl_estado_cotizacion` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+INSERT INTO `tbl_estado_pedido` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
 (1, 'EMITIDO', 'Moisés Moreno', '2015-05-16 00:00:00', NULL, NULL, b'1'),
 (2, 'APROBADO', 'Moisés Moreno', '2015-05-16 00:00:00', NULL, NULL, b'1'),
 (3, 'DESPACHO PARCIAL', 'Moisés Moreno', '2015-05-16 00:00:00', NULL, NULL, b'1'),
@@ -604,7 +566,15 @@ CREATE TABLE IF NOT EXISTS `tbl_formapago` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tbl_formapago`
+--
+
+INSERT INTO `tbl_formapago` (`id`, `descripcion`, `dia`, `deposito`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, 'Contado', 0, NULL, 'Moreno Moisés', '2015-05-17 09:03:29', NULL, NULL, b'1'),
+(2, 'Deposito Bancario', NULL, b'1', 'Moreno Moisés', '2015-05-17 09:03:37', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -720,14 +690,15 @@ CREATE TABLE IF NOT EXISTS `tbl_marca` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tbl_marca`
 --
 
 INSERT INTO `tbl_marca` (`id`, `descripcion`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
-(1, 'Faber castell', 'Moreno Moisés', '2015-05-16 07:55:25', NULL, NULL, b'1');
+(1, 'Faber castell', 'Moreno Moisés', '2015-05-16 07:55:25', NULL, NULL, b'1'),
+(2, 'Standford', 'Moreno Moisés', '2015-05-17 09:03:56', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -769,6 +740,79 @@ CREATE TABLE IF NOT EXISTS `tbl_pagotrabajador` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_pedcab`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_pedcab` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero` varchar(20) DEFAULT NULL,
+  `fecha_registro` date NOT NULL,
+  `fecha_vigente` date DEFAULT NULL,
+  `moneda` bit(1) NOT NULL,
+  `glosa` varchar(500) NOT NULL,
+  `tbl_cliente_id` int(11) NOT NULL,
+  `tbl_estado_pedido_id` int(11) DEFAULT NULL,
+  `creado_por` varchar(200) DEFAULT NULL,
+  `fecha_creado` datetime DEFAULT NULL,
+  `modificado_por` varchar(200) DEFAULT NULL,
+  `fecha_modificado` datetime DEFAULT NULL,
+  `activo` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tbl_cliente_id` (`tbl_cliente_id`),
+  KEY `tbl_estado_cotizacion_id` (`tbl_estado_pedido_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `tbl_pedcab`
+--
+
+INSERT INTO `tbl_pedcab` (`id`, `numero`, `fecha_registro`, `fecha_vigente`, `moneda`, `glosa`, `tbl_cliente_id`, `tbl_estado_pedido_id`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, '0000001', '2015-05-13', '2015-05-20', b'0', 'dfsafsa', 3, 1, 'Moisés Moreno', '2015-05-17 00:00:00', 'Moreno Moisés', '2015-05-17 21:42:35', b'0'),
+(2, '0000001', '2015-05-13', '2015-05-20', b'0', 'dfsafsa', 2, 1, 'Moreno MoisÃ©s', '2015-05-17 20:28:25', 'Moreno Moisés', '2015-05-17 21:18:57', b'0'),
+(3, '0000001', '2015-05-13', '2015-05-20', b'0', 'dfsafsa', 4, 1, 'Moreno Moisés', '2015-05-17 20:28:45', 'Moreno Moisés', '2015-05-17 21:18:57', b'0'),
+(4, '0000001', '2015-05-13', '2015-05-20', b'0', 'dfsafsa', 4, 1, 'Moreno Moisés', '2015-05-17 20:29:39', 'Moreno Moisés', '2015-05-17 21:18:57', b'0'),
+(5, '0000001', '2015-05-13', '2015-05-20', b'0', 'dfsafsa', 2, 1, 'Moreno Moisés', '2015-05-17 21:01:11', 'Moreno Moisés', '2015-05-17 21:18:57', b'0'),
+(6, '0000001', '2015-05-15', '2015-05-14', b'0', 'fdsafas', 2, 1, 'Moreno Moisés', '2015-05-17 21:19:06', 'Moreno Moisés', '2015-05-17 21:42:14', b'0'),
+(8, '0000002', '2015-05-01', '2015-05-21', b'1', 'dolares', 5, 1, 'Moreno Moisés', '2015-05-17 21:42:22', 'Moreno Moisés', '2015-05-18 07:36:05', b'1'),
+(10, '3123d', '2015-05-01', '2015-05-22', b'0', 'd', 4, 1, 'Moreno Moisés', '2015-05-17 21:42:56', 'Moreno Moisés', '2015-05-17 21:43:04', b'1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_peddet`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_peddet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tbl_pedcab_id` int(11) NOT NULL,
+  `tbl_articulo_id` int(11) NOT NULL,
+  `glosa` varchar(500) NOT NULL,
+  `cantidad` double NOT NULL,
+  `bruto` double NOT NULL DEFAULT '0',
+  `igv` double NOT NULL DEFAULT '0',
+  `descuento` double NOT NULL DEFAULT '0',
+  `creado_por` varchar(200) DEFAULT NULL,
+  `fecha_creado` datetime DEFAULT NULL,
+  `modificado_por` varchar(200) DEFAULT NULL,
+  `fecha_modificado` datetime DEFAULT NULL,
+  `activo` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tbl_cotcab_id` (`tbl_pedcab_id`,`tbl_articulo_id`),
+  KEY `tbl_articulo_id` (`tbl_articulo_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `tbl_peddet`
+--
+
+INSERT INTO `tbl_peddet` (`id`, `tbl_pedcab_id`, `tbl_articulo_id`, `glosa`, `cantidad`, `bruto`, `igv`, `descuento`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
+(1, 8, 5, 'd', 12, 3, 6.48, 6, 'Moreno Moisés', '2015-05-18 07:06:25', NULL, NULL, b'1'),
+(2, 8, 1, 'aaaa', 123, 1, 22.14, 2, 'Moreno Moisés', '2015-05-18 07:33:29', 'Moreno Moisés', '2015-05-18 07:35:19', b'0'),
+(3, 10, 5, 'ssss', 111, 444, 8871.12, 3, 'Moreno Moisés', '2015-05-18 07:35:34', NULL, NULL, b'1');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_proveedor`
 --
 
@@ -802,7 +846,7 @@ CREATE TABLE IF NOT EXISTS `tbl_proveedor` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_puntoventa` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(100) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
@@ -814,14 +858,15 @@ CREATE TABLE IF NOT EXISTS `tbl_puntoventa` (
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_almacen_id_idx` (`tbl_almacen_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tbl_puntoventa`
 --
 
 INSERT INTO `tbl_puntoventa` (`id`, `descripcion`, `direccion`, `telefono`, `tbl_almacen_id`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
-(0, 'Punto de Venta 1', '-', '-', 1, 'Moisés Moreno', '2015-05-15 01:06:21', 'Moisés Moreno', '2015-05-15 01:07:06', b'1');
+(1, 'Punto de Venta 1', '-', '-', 1, 'Moisés Moreno', '2015-05-15 01:06:21', 'Moisés Moreno', '2015-05-15 01:07:06', b'1'),
+(2, 'Punto de Venta 2', '-', '-', 1, 'Chavez Nestor', '2015-05-16 10:26:16', NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -881,18 +926,23 @@ CREATE TABLE IF NOT EXISTS `tbl_tipocambio` (
   `fecha_modificado` datetime DEFAULT NULL,
   `activo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `tbl_tipocambio`
 --
 
 INSERT INTO `tbl_tipocambio` (`id`, `cambio_compra`, `cambio_venta`, `fecha`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`) VALUES
-(1, 3.2, 3.1, '0000-00-00', '', '2015-05-15 14:26:56', NULL, NULL, b'1'),
-(2, 12, 1, '0000-00-00', '', '2015-05-15 14:32:48', NULL, NULL, b'1'),
-(3, 3, 3, '0000-00-00', '', '2015-05-15 14:33:34', NULL, NULL, b'1'),
-(4, 3, 3, '0000-00-00', '', '2015-05-15 15:11:08', NULL, NULL, b'1'),
-(5, 3, 3, '2015-05-19', '', '2015-05-15 15:56:06', NULL, NULL, b'1');
+(1, 3.2, 3.1, '0000-00-00', '', '2015-05-15 14:26:56', NULL, NULL, b'0'),
+(2, 12, 1, '0000-00-00', '', '2015-05-15 14:32:48', NULL, NULL, b'0'),
+(3, 3, 3, '0000-00-00', '', '2015-05-15 14:33:34', NULL, NULL, b'0'),
+(4, 3, 3, '0000-00-00', '', '2015-05-15 15:11:08', NULL, NULL, b'0'),
+(5, 3, 3, '0000-00-00', '', '2015-05-15 15:56:06', 'Moreno Moisés', '2015-05-17 09:10:08', b'0'),
+(6, 3, 3, '2015-05-17', 'Moreno Moisés', '2015-05-17 09:04:06', 'Moreno Moisés', '2015-05-17 09:37:55', b'1'),
+(7, 3, 3, '2015-05-16', 'Moreno Moisés', '2015-05-17 09:04:14', NULL, NULL, b'1'),
+(8, 3, 3, '2015-05-17', 'Moreno Moisés', '2015-05-17 09:28:07', NULL, NULL, b'0'),
+(9, 3, 3, '2015-05-17', 'Moreno Moisés', '2015-05-17 09:36:39', NULL, NULL, b'0'),
+(10, 3, 3, '2015-05-17', 'Moreno Moisés', '2015-05-17 09:36:48', NULL, NULL, b'0');
 
 -- --------------------------------------------------------
 
@@ -972,14 +1022,17 @@ CREATE TABLE IF NOT EXISTS `tbl_usuario` (
   `tbl_trabajador_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_trabajador_id_idx` (`tbl_trabajador_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tbl_usuario`
 --
 
 INSERT INTO `tbl_usuario` (`id`, `apepat`, `apemat`, `nombre_1`, `nombre_2`, `correo`, `password`, `alias`, `telefono`, `direccion`, `dni`, `fecha_nacimiento`, `creado_por`, `fecha_creado`, `modificado_por`, `fecha_modificado`, `activo`, `tipo_usuario`, `tbl_trabajador_id`) VALUES
-(1, 'Moreno', 'Usnayo', 'Moisés', 'Javier', 'moises_moreno007@hotmail.com', 'moises', 'mmoreno', NULL, NULL, '72391710', NULL, 'Moisés Moreno', '2015-05-15 08:26:11', 'Moisés Moreno', '2015-05-15 09:47:23', b'1', b'1', NULL);
+(1, 'Moreno', 'Usnayo', 'Moisés', 'Javier', 'moises_moreno007@hotmail.com', 'moises', 'mmoreno', NULL, NULL, '72391710', NULL, 'Moisés Moreno', '2015-05-15 08:26:11', 'Moisés Moreno', '2015-05-15 09:47:23', b'1', b'1', NULL),
+(2, 'Chavez', 'ff', 'Nestor', 'ff', 'nchavez@new-level.com.pe', '123', 'nchavez', 'ss', 'dd', 'ss', '0000-00-00', 'Moisés Moreno', '2015-05-16 00:00:00', 'Moreno Moisés', '2015-05-16 15:03:41', b'1', b'1', NULL),
+(3, 'fdasfdsa', 'dfsafdsa', 'fdsafsa', 'fdsadfsa', 'fdsadfsa@hotmail.com', 'fsadfdas', 'fdsafda', '', 'fasdfsa', '', '2015-05-19', 'Moreno Moisés', '2015-05-16 14:30:51', NULL, NULL, b'0', b'1', NULL),
+(4, 'fdasfdsa', 'dfsafdsa', 'fdsafsa', 'fdsadfsa', 'fdsadfsa@hotmail.com', 'fsadfdas', 'fdsafda', '', 'fasdfsa', '', '2015-05-19', 'Moreno Moisés', '2015-05-16 14:35:56', NULL, NULL, b'0', b'1', NULL);
 
 --
 -- Restricciones para tablas volcadas
@@ -1047,20 +1100,6 @@ ALTER TABLE `tbl_contactotransportista`
   ADD CONSTRAINT `fk_tbl_transportista_id` FOREIGN KEY (`tbl_transportista_id`) REFERENCES `tbl_transportista` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tbl_cotcab`
---
-ALTER TABLE `tbl_cotcab`
-  ADD CONSTRAINT `tbl_cotcab_ibfk_2` FOREIGN KEY (`tbl_estado_cotizacion_id`) REFERENCES `tbl_estado_cotizacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tbl_cotcab_ibfk_1` FOREIGN KEY (`tbl_cliente_id`) REFERENCES `tbl_cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tbl_cotdet`
---
-ALTER TABLE `tbl_cotdet`
-  ADD CONSTRAINT `tbl_cotdet_ibfk_1` FOREIGN KEY (`tbl_cotcab_id`) REFERENCES `tbl_cotcab` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tbl_cotdet_ibfk_2` FOREIGN KEY (`tbl_articulo_id`) REFERENCES `tbl_articulo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `tbl_cuenta_corriente`
 --
 ALTER TABLE `tbl_cuenta_corriente`
@@ -1120,6 +1159,20 @@ ALTER TABLE `tbl_letra`
 --
 ALTER TABLE `tbl_pagotrabajador`
   ADD CONSTRAINT `tbl_pagotrabajador_ibfk_1` FOREIGN KEY (`tbl_trabajador_id`) REFERENCES `tbl_trabajador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tbl_pedcab`
+--
+ALTER TABLE `tbl_pedcab`
+  ADD CONSTRAINT `tbl_pedcab_ibfk_2` FOREIGN KEY (`tbl_estado_pedido_id`) REFERENCES `tbl_estado_pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tbl_pedcab_ibfk_1` FOREIGN KEY (`tbl_cliente_id`) REFERENCES `tbl_cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tbl_peddet`
+--
+ALTER TABLE `tbl_peddet`
+  ADD CONSTRAINT `tbl_peddet_ibfk_2` FOREIGN KEY (`tbl_articulo_id`) REFERENCES `tbl_articulo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tbl_peddet_ibfk_3` FOREIGN KEY (`tbl_pedcab_id`) REFERENCES `tbl_pedcab` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tbl_puntoventa`
