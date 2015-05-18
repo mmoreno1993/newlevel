@@ -59,6 +59,20 @@
                         <input value="<?php echo substr($this->cliente[0]['cuenta_inicial_dolares_fecha'],0,10) ?>" readonly class="form-control datepicker" id="txtfechadolares_" name="txtfechadolares_" />
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="cmbtipocliente">Tipo de Cliente</label>
+                        <select id="cmbtipocliente" name="cmbtipocliente" class="form-control">
+                            <option <?php echo (($this->cliente[0]['tipo_cliente']=="1")?'selected':''); ?> value="1">Minorista</option>
+                            <option <?php echo (($this->cliente[0]['tipo_cliente']=="2")?'selected':''); ?> value="2">Mayorista</option>
+                            <option <?php echo (($this->cliente[0]['tipo_cliente']=="3")?'selected':''); ?> value="3">Mayorista Preferencia</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtgrupo">Grupo</label>
+                        <input class="form-control" value="<?php echo $this->cliente[0]['grupo']; ?>" type="text" name="txtgrupo" id="txtgrupo" />
+                    </div>
+                </div>
             </div>
 
             <div class="modal-footer">

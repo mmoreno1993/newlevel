@@ -52,6 +52,7 @@ class configuracion extends App {
                 'tbl_categoria_id' => $_POST['cmbcategoria'],
                 'tbl_color_id' => $_POST['cmbcolor'],
                 'tbl_marca_id' => $_POST['cmbmarca'],
+                'grupo' => $_POST['txtgrupo'],
                 'modificado_por' => $_SESSION['user']['nombre'],
                 'foto' => '',
                 'precio1' => ((trim($_POST['txtprecio1'])=='')?'null':$_POST['txtprecio1']),
@@ -431,6 +432,8 @@ class configuracion extends App {
                 'cuenta_inicial_dolares' => $_POST['txtmontodolares'],
                 'cuenta_inicial_soles_fecha' => $_POST['txtfechasoles'],
                 'cuenta_inicial_dolares_fecha' => $_POST['txtfechadolares'],
+                'tipo_cliente' => $_POST['cmbtipocliente'],
+                'grupo' => $_POST['txtgrupo'],
                 'creado_por' => $_SESSION['user']['nombre']
                 ));
             header('Location:index.php?modulo=configuracion&accion=cliente');
@@ -449,6 +452,8 @@ class configuracion extends App {
                 'cuenta_inicial_dolares' => $_POST['txtmontodolares'],
                 'cuenta_inicial_soles_fecha' => $_POST['txtfechasoles_'],
                 'cuenta_inicial_dolares_fecha' => $_POST['txtfechadolares_'],
+                'tipo_cliente' => $_POST['cmbtipocliente'],
+                'grupo' => $_POST['txtgrupo'],
                 'modificado_por' => $_SESSION['user']['nombre'],
                 ));
             header('Location:index.php?modulo=configuracion&accion=cliente');

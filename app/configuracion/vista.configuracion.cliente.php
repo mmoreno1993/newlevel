@@ -59,7 +59,20 @@
                             <input value="<?php echo date('Y-m-d') ?>" readonly class="form-control datepicker" id="txtfechadolares" name="txtfechadolares" />
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="cmbtipocliente">Tipo de Cliente</label>
+                            <select id="cmbtipocliente" name="cmbtipocliente" class="form-control">
+                                <option selected value="1">Minorista</option>
+                                <option value="2">Mayorista</option>
+                                <option value="3">Mayorista Preferencia</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="txtgrupo">Grupo</label>
+                            <input class="form-control" type="text" name="txtgrupo" id="txtgrupo" />
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button name="btnNuevoCliente" type="submit" class="btn btn-primary">

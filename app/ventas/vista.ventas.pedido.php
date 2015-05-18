@@ -1,4 +1,5 @@
-
+<div id="modal_modificar_pedido" data-backdrop="static" class="modal fade">
+</div>
 <div id="modal_nuevo_pedido" data-backdrop="static" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -6,16 +7,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Nuevo Pedido</h4>
             </div>
-            <div class="modal-body">
-                <form autocomplete="off">
+            <form autocomplete="off" method="POST">
+                <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-3">
                             <label for="txtcliente">Cliente</label>
                             <input data-toggle="modal" data-target="#modal_obtener_clientes" id="txtcliente" name="txtcliente" readonly type="text" class="form-control" />
                         </div>
-                        <div class="col-sm-4">
-                            <br>
-                            <label id="lblrazonsocial"></label>
+                        <div class="col-sm-9">
+                            <label>&nbsp;</label>
+                            <label class="form-control" disabled id="lblrazonsocial"></label>
                         </div>    
                     </div>
                     <div class="row">
@@ -29,19 +30,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <label for="txtnumero">Número</label>
-                            <input id="txtnumero" readonly name="txtnumero" type="text" class="form-control" />
+                            <input maxlength="7" id="txtnumero" readonly name="txtnumero" type="text" class="form-control" />
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <label for="cmbautomatico">Automático</label>
                             <select id="cmbautomatico" name="cmbautomatico" class="form-control">
                                 <option selected value="0">SI</option>
                                 <option value="1">NO</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-sm-4">
                             <label for="cmbmoneda">Moneda</label>
                             <select id="cmbmoneda" name="cmbmoneda" class="form-control">
@@ -50,22 +49,24 @@
                             </select>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    Guardar
-                </button>
-                <button style="width:100px;" data-toggle="modal" data-target="#modal_nuevo_pedido" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Nuevo
-                </button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    Close
-                </button>
-            </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="txtglosa">Glosa</label>
+                            <textarea rows="5" maxlength="200" id="txtglosa" name="txtglosa" type="text" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button name="btnNuevoPedido" type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Guardar
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Close
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -110,14 +111,13 @@
         </div>
     </div>
 </div>
-<div id="modal_modificar_pedido" data-backdrop="static" class="modal fade">
-</div>
+
 <div class="row">
     <div class="col-lg-12">
         <h3 class="page-header"><i class="icon_document_alt"></i> Ventas</h3>
         <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="#">Ventas</a></li>
-            <li><i class="fa fa-laptop"></i>Cotizacion</li>                          
+            <li><i class="fa fa-laptop"></i>Pedidos</li>                          
         </ol>
     </div>
 </div>
@@ -141,6 +141,7 @@
                                     <th>Fecha de Vigencia</th>
                                     <th>Total</th>
                                     <th>Modificar</th>
+                                    <th>Tiene detalle</th>
                                     <th>Detalles</th>
                                 </tr>
                             </thead>
@@ -150,16 +151,17 @@
                                 ?>
                                 <tr>
                                     <td>
-                                        <input name="chkPedido[]" value="" type="checkbox" />
+                                        <input name="chkPedido[]" value="<?php echo $this->pedidos[$i]['id']; ?>" type="checkbox" />
                                     </td>
                                     <td><?php echo $this->pedidos[$i]['razonsocial']; ?></td>
                                     <td><?php echo $this->pedidos[$i]['numero']; ?></td>
                                     <td><?php echo $this->pedidos[$i]['estado']; ?></td>
                                     <td><?php echo $this->pedidos[$i]['fecha_registro']; ?></td>
-                                    <td><?php echo $this->pedidos[$i]['fecha_vigencia']; ?></td>
+                                    <td><?php echo $this->pedidos[$i]['fecha_vigente']; ?></td>
                                     <td><?php echo $this->pedidos[$i]['total']; ?></td>
-                                    <td><a href="index.php?modulo=ventas&accion=pedidoDetalle&pedido=<?php echo $this->pedidos[$i]['id']; ?>"><span class="glyphicon glyphicon-align-justify"></span></a></td>
                                     <td><a data-toggle="modal" data-target="#modal_modificar_pedido" href="#" onclick="modificarPedido('index.php?modulo=ventas&accion=modificarPedido&pedido=<?php echo $this->pedidos[$i]['id']; ?>&ajax=1');"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                    <td><?php echo (($this->pedidos[$i]['total']=="")?'NO':'SI'); ?></td>
+                                    <td><a href="index.php?modulo=ventas&accion=detallePedido&pedido=<?php echo $this->pedidos[$i]['numero'].'&id='.$this->pedidos[$i]['id']; ?>"><span class="glyphicon glyphicon-align-justify"></span></a></td>
                                 </tr>
                                 <?php
                                     }
@@ -172,16 +174,15 @@
                             <span class="glyphicon glyphicon-plus"></span>
                             Nuevo
                         </button>
-                        <button style="width:100px;" class="btn btn-primary">
+                        <button name="btnEliminarPedido" type="submit" style="width:100px;" class="btn btn-primary">
                             <span class="glyphicon glyphicon-remove"></span>
                             Eliminar
                         </button>
                         <button disabled style="width:100px;" class="btn btn-primary">
                             <i class="icon_document_alt"></i>
                             Reporte
-                        </button>    
+                        </button>
                     </div>
-                    
                 </form>
             </div>
         </div>
@@ -189,7 +190,7 @@
 </div>
 <script>
 
-function obtenerPedido(url)
+function modificarPedido(url)
 {
     $('#modal_modificar_pedido').load(url);
 }

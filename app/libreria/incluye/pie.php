@@ -94,9 +94,7 @@
 <script type="text/javascript" src="assets/datapicker/jquery-ui.js"></script>
 <script>
 $(document).on('ready',function(){
-  $('.datepicker').datepicker({
-    dateFormat: "yy-mm-dd"
-  });
+
 $('.tablafiltro').dataTable( {
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
@@ -113,6 +111,9 @@ $('.tablafiltro').dataTable( {
       }else{
           $('#txtnumero').removeAttr('readonly');
       }
+  });
+  $('.datepicker').datepicker({
+    dateFormat: "yy-mm-dd"
   });
 });
 </script>
